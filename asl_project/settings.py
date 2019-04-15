@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'asl_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'asl_database',
+        'NAME': 'asl',
         'USER': 'rigbylewis',
         'PASSWORD': 'password',
         'HOST': 'localhost'
