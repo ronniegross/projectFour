@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import styled from 'styled-components'
+
+const Pic = styled.img`
+    width: 200px;
+`
+
 
 class Resource extends Component {
     state = {
@@ -30,11 +36,15 @@ class Resource extends Component {
         return (
             <div>
                 <h2>Resource</h2>
-                <img src={this.state.resource.photo_url} alt=""/>
+                <Pic src={this.state.resource.photo_url} alt="" />
+                {/* <img src={this.state.resource.photo_url} alt=""/> */}
                 <h1>{this.state.resource.resource_name}</h1>
+                <h3>{this.state.resource.address}</h3>
+                <h3>{this.state.resource.contact_number}</h3>
                 {this.state.comments.map(comment => (
                     <div key={comment.id}>
-                        <h4>{comment.comment}</h4>
+                        <h4>Comments:</h4>
+                        <p>{comment.comment}</p>
                     </div>
                 ))}
             </div>
