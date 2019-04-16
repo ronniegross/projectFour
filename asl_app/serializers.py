@@ -2,6 +2,11 @@ from rest_framework import serializers
 
 from .models import Resource, User, Comment
 
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('id', 'comment', 'user', 'resource')
+
 class ResourceSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     class Meta:
@@ -15,7 +20,3 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'name', 'email', 'password', 'age', 'gender')
 
-class CommentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Comment
-        fields = ('id', 'comment', 'user', 'resource')
