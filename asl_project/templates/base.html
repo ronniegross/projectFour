@@ -1,0 +1,8 @@
+<nav>
+  <a href="/">Shelter List</a>
+  <div class="user-info">
+    {% if user.is_authenticated %} Welcome, {{ user.name }}
+    <a href="{% url 'logout' %}">Signout</a> {% else %}
+    <a href="{% url 'login' %}">Login</a> {% endif %}
+  </div>
+</nav>
