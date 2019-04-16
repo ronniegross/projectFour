@@ -32,7 +32,7 @@ class ResourceList extends Component {
                 <h1>All Resources</h1>
                 {this.state.resources.map(resource => (
                     <div key={resource.id}>
-                        <Link to={`/resource/${resource.id}`} >{resource.resource_name}</Link>
+                        <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
                     </div>
                 ))}
             </div>

@@ -19,7 +19,7 @@ class App extends Component {
 
                     <Switch>
                       <Route exact path="/" component={ResourceList}/>
-                      <Route path="/resource/:id" component={Resource}/>
+                      <Route path="/resources/:id" component={Resource}/>
                     </Switch>
                 </div>
             </Router>
