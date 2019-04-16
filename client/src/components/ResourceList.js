@@ -14,7 +14,7 @@ class ResourceList extends Component {
 
     fetchResources = async () => {
         try {
-            const res = await axios.get('/api/v1/resources');
+            const res = await axios.get('/api/resources/');
             this.setState({resources: res.data});
         }
         catch (err) {
@@ -32,7 +32,7 @@ class ResourceList extends Component {
                 <h1>All Resources</h1>
                 {this.state.resources.map(resource => (
                     <div key={resource.id}>
-                        <Link to={`/shelter/${resource.id}`} >{resource.resource_name}</Link>
+                        <Link to={`/resource/${resource.id}`} >{resource.resource_name}</Link>
                     </div>
                 ))}
             </div>

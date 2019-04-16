@@ -11,12 +11,12 @@ class ResourceSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     class Meta:
         model = Resource
-        fields = ('id', 'resource_name', 'photo_url', 'address', 'contact_number')
+        fields = ('id', 'resource_name', 'photo_url', 'address', 'contact_number', 'comments')
 
 
 class UserSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     class Meta:
         model = User
-        fields = ('id', 'name', 'email', 'password', 'age', 'gender')
+        fields = ('id', 'name', 'email', 'password', 'age', 'gender', 'comments')
 

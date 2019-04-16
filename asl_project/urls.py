@@ -20,5 +20,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.FrontendAppView.as_view()),  # New URL for the index route
-    path('api/v1/', include('asl_app.urls')),
+    path('api/', include('asl_app.urls')),
 ]
