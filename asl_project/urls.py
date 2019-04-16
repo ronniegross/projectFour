@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.FrontendAppView.as_view()),  # New URL for the index route
     path('api/', include('asl_app.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -9,19 +9,21 @@ export default class CreateAccount extends Component {
             name: '',
             email: '',
             password: '',
+            age: '',
+            gender: ''
         },
         createdUser: {},
         redirectToHome: false
     }
 
-    componentDidMount = () => {
-        axios.get('/api/asl').then(res => {
-            this.setState({ user: res.data })
-        })
-    }
+    // componentDidMount = () => {
+    //     axios.get('/api/users/').then(res => {
+    //         this.setState({ user: res.data })
+    //     })
+    // }
 
     createUser = () => {
-        axios.post('/api/asl', { user: this.state.createdUser })
+        axios.post('/api/users/', this.state.createdUser)
             .then(res => {
                 this.setState({ redirectToHome: true, createdUser: res.data })
             })
@@ -40,6 +42,9 @@ export default class CreateAccount extends Component {
 
 
     render() {
+        if (this.state.redirectToHome === true && this.state.createdUser.id !== null) {
+            return (<Redirect to={'/'} />)
+        }
         return (
             <div>
                 <form onSubmit={this.handleSignUp}>
