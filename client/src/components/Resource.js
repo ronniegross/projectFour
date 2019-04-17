@@ -28,7 +28,7 @@ class Resource extends Component {
 
     componentDidMount() {
         const resourceId = this.props.match.params.id;
-        this.fetchResource(resourceId)
+        this.fetchResource(resourceId);
         this.fetchUsers();
     }
 
