@@ -21,12 +21,15 @@ class Resource extends Component {
         isCommentFormDisplayed: false,
         createdComment: {},
         redirectToResourceList: false,
-        isUpdateResourceFormDisplayed: false
+        isUpdateResourceFormDisplayed: false,
+        users: [],
+        selectedUser: {}
     }
 
     componentDidMount() {
         const resourceId = this.props.match.params.id;
         this.fetchResource(resourceId)
+        this.fetchUsers();
     }
 
     fetchResource = async (resourceId) => {
@@ -43,6 +46,18 @@ class Resource extends Component {
         }
     }
 
+    fetchUsers = async () => {
+        try {
+            const res = await axios.get('/api/users/');
+            this.setState({users: res.data});
+        }
+        catch (err) {
+            console.log(err)
+            this.setState({error: err.message})
+        }
+    }
+
+
     toggleCommentForm = () => {
         this.setState((state, props) => {
             return ({ isCommentFormDisplayed: !state.isCommentFormDisplayed })
@@ -53,6 +68,7 @@ class Resource extends Component {
         axios.post('/api/comments/', this.state.createdComment) // might need to make a duplicate state here...
             .then(res => {
                 this.setState({ createdComment: res.data })
+                this.state.comments.push(this.state.createdComment)
             })
     }
 
@@ -89,7 +105,9 @@ class Resource extends Component {
 
 
     render() {
-        console.log(this.state.resource)
+        // console.log(this.state.comments)
+        // console.log(this.state.createdComment)
+        console.log(this.state.users)
         if (this.state.redirectToResourceList === true) {
             return (<Redirect to={'/'} />)
         }
@@ -109,8 +127,10 @@ class Resource extends Component {
                 <button onClick={this.toggleCommentForm}>Add comment</button>
                 {
                     this.state.isCommentFormDisplayed ?
-                        <form>
+                        <form onSubmit={this.createComment}>
                             <label htmlFor="comment">write your comment here: </label>
+                            {/* map first --> add option based on item of map */}
+                            <option value={this.state.users} selected={this.state.selectedUser == this.state.user.value}>select user</option>
                             <input
                                 id="comment"
                                 type="text"

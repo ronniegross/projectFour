@@ -96,13 +96,13 @@ export default class NavBar extends Component {
                     <nav>
                         <div>
                             <ul>
-                                <li className="nth-of-type"><Link to={'/'}> List of Resources </Link></li>
-                                <li className="nth-of-type"><Link to={'/map'}> Map </Link></li>
-                                <li className="nth-of-type"><Link to={'/links'}> Links </Link></li>
-                                <li className="logo nth-of-type"><img src="https://i.imgur.com/tFS2b17.png" alt="aslLogo" /></li>
-                                <li className="nth-of-type"><Link to={'/numberindex'}> Number Index </Link></li>
-                                <li className="nth-of-type"><Link to={'/mission'}> Mission </Link></li>
-                                <li className="nth-of-type"><Link to={`/${this.props.userId}`}> Account Info </Link></li>
+                                <li><Link to={'/'}> List of Resources </Link></li>
+                                <li><Link to={'/map'}> Map </Link></li>
+                                <li><Link to={'/links'}> Links </Link></li>
+                                <li><img src="https://i.imgur.com/tFS2b17.png" alt="aslLogo" /></li>
+                                <li><Link to={'/numberindex'}> Number Index </Link></li>
+                                <li><Link to={'/mission'}> Mission </Link></li>
+                                <li><Link to={`/${this.props.userId}`}> Account Info </Link></li>
                             </ul>
                         </div>
                     </nav>
