@@ -10,11 +10,18 @@ const Pic = styled.img`
 
 class Resource extends Component {
     state = {
+        // resource: {
+        //     resource_name: '',
+        //     photo_url: '',
+        //     address: '',
+        //     contact_number: ''
+        // },
         resource: {},
         comments: [],
         isCommentFormDisplayed: false,
         createdComment: {},
-        redirectToResourceList: false
+        redirectToResourceList: false,
+        isUpdateResourceFormDisplayed: false
     }
 
     componentDidMount() {
@@ -49,16 +56,17 @@ class Resource extends Component {
             })
     }
 
-    handleChange = (event) => {
+    handleCommentChange = (event) => {
         const clonedCreatedComment = { ...this.state.createdComment }
         clonedCreatedComment[event.target.name] = event.target.value
         this.setState({ createdComment: clonedCreatedComment })
     }
 
-    // updateResource = (event) => {
-    //     event.preventDefault()
-    //     axios.put(`/api/resources/${this.props.match.params.resourceId}`, { savedCheese: this.state.savedCheese })
-    // }
+
+    updateResource = (event) => {
+        event.preventDefault()
+        axios.put(`/api/resources/${this.props.match.params.id}/`, this.state.resource)
+    }
 
     deleteResource = (event) => {
         event.preventDefault()
@@ -67,8 +75,21 @@ class Resource extends Component {
         })
     }
 
+    toggleUpdateResource = () => {
+        this.setState((state, props) => {
+            return ({ isUpdateResourceFormDisplayed: !state.isUpdateResourceFormDisplayed })
+        })
+    }
+
+    handleUpdateChange = (event) => {
+        const clonedResource = { ...this.state.resource }
+        clonedResource[event.target.name] = event.target.value
+        this.setState({ resource: clonedResource })
+    }
+
+
     render() {
-        // console.log(this.props.match.params.id)
+        console.log(this.state.resource)
         if (this.state.redirectToResourceList === true) {
             return (<Redirect to={'/'} />)
         }
@@ -94,11 +115,54 @@ class Resource extends Component {
                                 id="comment"
                                 type="text"
                                 name="comment"
-                                onChange={this.handleChange}
+                                onChange={this.handleCommentChange}
                                 value={this.state.createdComments}
                             />
                             <button>submit</button>
                         </form>
+                        : null
+                }
+                <button onClick={this.toggleUpdateResource}>update resource</button>
+                {
+                    this.state.isUpdateResourceFormDisplayed ?
+                        <div>
+                            <h3>Update resource:</h3>
+                            <form id="resource-form" onSubmit={this.updateResource}>
+                                <label htmlFor="resource_name">Resource Name</label>
+                                <input
+                                    id="resource_name"
+                                    type="text"
+                                    name="resource_name"
+                                    onChange={this.handleUpdateChange}
+                                    value={this.state.resource.resource_name}
+                                />
+                                <label htmlFor="photo_url">Photo URL</label>
+                                <input
+                                    id="photo_url"
+                                    type="text"
+                                    name="photo_url"
+                                    onChange={this.handleUpdateChange}
+                                    value={this.state.resource.photo_url}
+                                />
+                                <label htmlFor="address">Address</label>
+                                <input
+                                    id="address"
+                                    type="text"
+                                    name="address"
+                                    onChange={this.handleUpdateChange}
+                                    value={this.state.resource.address}
+                                />
+                                <label htmlFor="contact_number">Contact Number</label>
+                                <input
+                                    id="contact_number"
+                                    type="text"
+                                    name="contact_number"
+                                    onChange={this.handleUpdateChange}
+                                    value={this.state.resource.contact_number}
+                                />
+                                <button>update resource</button>
+                            </form>
+                        </div>
                         : null
                 }
                 <button onClick={this.deleteResource}>delete resource</button>
