@@ -139,15 +139,21 @@ STATICFILES_DIRS = [
 import django_heroku
 django_heroku.settings(locals())
 
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.AllowAny',
+#     )
+#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
+#     #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#     #     'rest_framework.authentication.BasicAuthentication',
+#     #     'rest_framework.authentication.SessionAuthentication',
+#     # )
+# }
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     )
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    #     'rest_framework.authentication.BasicAuthentication',
-    #     'rest_framework.authentication.SessionAuthentication',
-    # )
 }
 
 LOGIN_REDIRECT_URL = ''
