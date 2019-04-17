@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom';
 
 const Pic = styled.img`
     width: 200px;
@@ -12,7 +13,8 @@ class Resource extends Component {
         resource: {},
         comments: [],
         isCommentFormDisplayed: false,
-        createdComment: {}
+        createdComment: {},
+        redirectToResourceList: false
     }
 
     componentDidMount() {
@@ -53,8 +55,23 @@ class Resource extends Component {
         this.setState({ createdComment: clonedCreatedComment })
     }
 
+    // updateResource = (event) => {
+    //     event.preventDefault()
+    //     axios.put(`/api/resources/${this.props.match.params.resourceId}`, { savedCheese: this.state.savedCheese })
+    // }
+
+    deleteResource = (event) => {
+        event.preventDefault()
+        axios.delete(`/api/resources/${this.props.match.params.id}/`).then(res => {
+            this.setState({ redirectToResourceList: true })
+        })
+    }
+
     render() {
-        console.log()
+        // console.log(this.props.match.params.id)
+        if (this.state.redirectToResourceList === true) {
+            return (<Redirect to={'/'} />)
+        }
         return (
             <div>
                 <h1>{this.state.resource.resource_name}</h1>
@@ -84,6 +101,7 @@ class Resource extends Component {
                         </form>
                         : null
                 }
+                <button onClick={this.deleteResource}>delete resource</button>
             </div>
         );
     }
