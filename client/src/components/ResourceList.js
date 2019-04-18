@@ -8,6 +8,10 @@ const Pic = styled.img`
 `
 
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .resourceDiv {
         display: flex;
         flex-direction: column;
@@ -37,6 +41,51 @@ const Wrapper = styled.div`
 
     .btn:hover {
         box-shadow: 3px 3px tomato;
+    }
+
+    .resource-form {
+        border: 2px solid #53B1F8;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin: 50px;
+        padding: 20px;
+        label {
+            color: #282828;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            color: #282828;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 20px;
+            /* border-radius: 5px; */
+            border: none;
+            border-bottom: 2px solid #53B1F8;
+        }
+        input[type="text"] {
+            font-size:16px;
+        }
+        h3 {
+            margin: 0;
+            color: tomato;
+        }
+        button {
+            width: 200px;
+            height: 40px;
+            border: 2px solid #53B1F8;
+            background-color: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: tomato;
+            border-radius: 5px;
+        }
+        button:hover {
+        box-shadow: 3px 3px tomato;
+    }
+    }
+    .resource-component {
+        margin: 10px;
     }
 `
 
@@ -108,53 +157,66 @@ class ResourceList extends Component {
             <div>
                 <Wrapper>
                     <TileWrapper>
-                    {/* <h1>All Resources</h1> */}
-                    {this.state.resources.map(resource => (
-                        <div className="resourceDiv" key={resource.id}>
-                            <Pic src={resource.photo_url} alt="resourcePic"></Pic>
-                            <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
-                        </div>
-                    ))}
+                        {/* <h1>All Resources</h1> */}
+                        {this.state.resources.map(resource => (
+                            <div className="resourceDiv" key={resource.id}>
+                                <Pic src={resource.photo_url} alt="resourcePic"></Pic>
+                                <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
+                            </div>
+                        ))}
                     </TileWrapper>
                     <button className="btn" onClick={this.toggleAddNewResourceForm}>Add a New Resource</button>
                     {
                         this.state.isAddNewResourceFormDisplayed ?
                             <div>
-                                <h3>Add a New Resource:</h3>
-                                <form id="resource-form" onSubmit={this.handleCreateResource}>
-                                    <label htmlFor="resource_name">Resource Name</label>
-                                    <input
-                                        id="resource_name"
-                                        type="text"
-                                        name="resource_name"
-                                        onChange={this.handleChange}
-                                        value={this.state.createdResource.resource_name}
-                                    />
-                                    <label htmlFor="photo_url">Photo URL</label>
-                                    <input
-                                        id="photo_url"
-                                        type="text"
-                                        name="photo_url"
-                                        onChange={this.handleChange}
-                                        value={this.state.createdResource.photo_url}
-                                    />
-                                    <label htmlFor="address">Address</label>
-                                    <input
-                                        id="address"
-                                        type="text"
-                                        name="address"
-                                        onChange={this.handleChange}
-                                        value={this.state.createdResource.address}
-                                    />
-                                    <label htmlFor="contact_number">Contact Number</label>
-                                    <input
-                                        id="contact_number"
-                                        type="text"
-                                        name="contact_number"
-                                        onChange={this.handleChange}
-                                        value={this.state.createdResource.contact_number}
-                                    />
-                                    <button>Submit new resource</button>
+                                <form className="resource-form" onSubmit={this.handleCreateResource}>
+                                    <div className="resource-component">
+                                        <h3>Add a New Resource:</h3>
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="resource_name">Resource Name: </label>
+                                        <input
+                                            id="resource_name"
+                                            type="text"
+                                            name="resource_name"
+                                            onChange={this.handleChange}
+                                            value={this.state.createdResource.resource_name}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="photo_url">Photo URL: </label>
+                                        <input
+                                            id="photo_url"
+                                            type="text"
+                                            name="photo_url"
+                                            onChange={this.handleChange}
+                                            value={this.state.createdResource.photo_url}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="address">Address: </label>
+                                        <input
+                                            id="address"
+                                            type="text"
+                                            name="address"
+                                            onChange={this.handleChange}
+                                            value={this.state.createdResource.address}
+                                        />
+                                    </div>
+
+                                    <div className="resource-component">
+                                        <label htmlFor="contact_number">Contact Number: </label>
+                                        <input
+                                            id="contact_number"
+                                            type="text"
+                                            name="contact_number"
+                                            onChange={this.handleChange}
+                                            value={this.state.createdResource.contact_number}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
+                                        <button className="resource-component">Submit new resource</button>
+                                    </div>
                                 </form>
                             </div>
                             : null

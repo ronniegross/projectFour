@@ -3,7 +3,6 @@ import axios from 'axios';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 import CreateComment from './CreateComment';
-// import DisplayComment from './DisplayComment'
 
 const Pic = styled.img`
     width: 200px;
@@ -34,17 +33,11 @@ class Resource extends Component {
     fetchResource = async (resourceId) => {
         try {
             const resourceResponse = await axios.get(`/api/resources/${resourceId}/`)
-            // console.log(resourceId)
             this.setState({
                 resource: resourceResponse.data,
                 comments: resourceResponse.data.comments
 
             })
-            // if (this.state.comments != null) {
-            //     this.setState({
-            //         comments: resourceResponse.data.comments
-            //     })
-            // }
         }
         catch (error) {
             console.log(error)
@@ -81,38 +74,19 @@ class Resource extends Component {
     }
 
     createComment = () => {
-        axios.post('/api/comments/', this.state.createdComment) // might need to make a duplicate state here...
+        axios.post('/api/comments/', this.state.createdComment)
             .then(res => {
                 this.setState({ createdComment: res.data })
                 this.state.comments.push(this.state.createdComment)
             })
     }
 
-    // deleteComment = (event) => {
-    //     event.preventDefault()
-    //     // need to determine which array the comment is in exactly
-    //     // this.state.comment[arrayNumberVariable]
-    //     // const arrayNumberVariable = {this.state.array[0].id}
-
-    //     axios.delete(`/api/comment/${arrayNumberVariable}`)
-    // }
-
     deleteComment = async (event) => {
-        // console.log(this.state)
         try {
             event.preventDefault()
             this.state.comments.map(comment => (
                 axios.delete(`/api/comments/${comment.id}/`)
             ))
-            // this.state.comments.map(comment => (
-                // axios.delete(`/api/comment/${comment.id}`
-                // console.log(comment.id)
-                // console.log(comment.key)
-                // if (comment.id == comment.key) {
-                    // axios.delete(`/api/comment/${comment.id}`)
-                // )
-            // })
-            // const arrayNumberVariable = this.state.array[0].id
         }
         catch (error) {
             console.log(error)
@@ -154,10 +128,6 @@ class Resource extends Component {
 
 
     render() {
-        // console.log(this.state.comments)
-        // console.log(this.state.createdComment)
-        // console.log(this.props.match.params.id)
-        // console.log(this.state.comments)
         if (this.state.redirectToResourceList === true) {
             return (<Redirect to={'/'} />)
         }
@@ -168,20 +138,6 @@ class Resource extends Component {
                     <Pic src={this.state.resource.photo_url} alt="" />
                     <h3>Address: {this.state.resource.address}</h3>
                     <h3>Contact Number: {this.state.resource.contact_number}</h3>
-                    {/* <DisplayComment />  */}
-                    {/* {
-                        this.state.comments != null ?
-                            <div>
-                                {this.state.comments.map(comment => (
-                                    <div key={comment.id}>
-                                        <h4>Comments:</h4>
-                                        <p>{comment.comment}</p>
-                                        <button onClick={this.deleteComment}>delete comment</button>
-                                    </div>
-                                ))}
-                            </div>
-                            : null
-                    } */}
                     {this.state.comments.map(comment => (
                         <div key={comment.id}>
                             <p>{comment.user}:</p>

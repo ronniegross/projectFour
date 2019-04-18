@@ -3,6 +3,12 @@ import axios from 'axios';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 
+const Wrapper = styled.div`
+    .comment-form {
+        border: 2px solid #53B1F8;
+    } 
+`
+
 export default class CreateComment extends Component {
     state = {
         // resource: {
@@ -70,50 +76,54 @@ export default class CreateComment extends Component {
     }
 
     render() {
-        console.log(this.state.resources)
+        // console.log(this.state.resources)
         return (
             <div>
-                <form onSubmit={this.createComment}>
-                    <ul>
-                        {
-                            this.state.users.map(user => (
-                                <div key={user.id} value={user.name}>{user.name}: {user.id}</div>
-                            ))
-                        }
-                    </ul>
-                    <ul>
-                        {
-                            this.state.resources.map(resource => (
-                                <div key={resource.id} value={resource.resource_name}>{resource.resource_name}: {resource.id}</div>
-                            ))
-                        }
-                    </ul>
-                    <label htmlFor="comment">write your comment here: </label>
-                    <input
-                        id="comment"
-                        type="text"
-                        name="comment"
-                        onChange={this.handleCommentChange}
-                        value={this.state.createdComments}
-                    />
-                    <label htmlFor="user">user id</label>
-                    <input
-                        id="user"
-                        type="text"
-                        name="user"
-                        onChange={this.handleCommentChange}
-                        value={this.state.createdComments}
-                    />
-                    <label htmlFor="resource">resourceId</label>
-                    <input
-                        id="resource"
-                        type="text"
-                        name="resource"
-                        onChange={this.handleCommentChange}
-                        value={this.state.createdComments}
-                    />
-                    <button>submit</button>
-                </form>
+                <Wrapper>
+                    <div className="comment-form">
+                        <form onSubmit={this.createComment}>
+                            <ul>
+                                {
+                                    this.state.users.map(user => (
+                                        <div key={user.id} value={user.name}>{user.name}: {user.id}</div>
+                                    ))
+                                }
+                            </ul>
+                            <ul>
+                                {
+                                    this.state.resources.map(resource => (
+                                        <div key={resource.id} value={resource.resource_name}>{resource.resource_name}: {resource.id}</div>
+                                    ))
+                                }
+                            </ul>
+                            <label htmlFor="comment">write your comment here: </label>
+                            <input
+                                id="comment"
+                                type="text"
+                                name="comment"
+                                onChange={this.handleCommentChange}
+                                value={this.state.createdComments}
+                            />
+                            <label htmlFor="user">user id</label>
+                            <input
+                                id="user"
+                                type="text"
+                                name="user"
+                                onChange={this.handleCommentChange}
+                                value={this.state.createdComments}
+                            />
+                            <label htmlFor="resource">resourceId</label>
+                            <input
+                                id="resource"
+                                type="text"
+                                name="resource"
+                                onChange={this.handleCommentChange}
+                                value={this.state.createdComments}
+                            />
+                            <button>submit</button>
+                        </form>
+                    </div>
+                </Wrapper>
             </div>
         )
     }
