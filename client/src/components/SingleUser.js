@@ -12,17 +12,8 @@ export default class SingleUser extends Component {
     componentDidMount() {
         const userId = this.props.match.params.userId;
         this.fetchUser(userId);
-        // console.log(this.props.match.params.userId)
-        // this.fetchUsers();
     }
 
-
-    // componentDidMount() {
-    //     const userId = this.props.match.params.id;
-    //     this.fetchUser(userId);
-    //     console.log('i work so far')
-    //     // this.fetchUsers();
-    // }
 
     fetchUser = async (userId) => {
         try {
@@ -69,6 +60,10 @@ export default class SingleUser extends Component {
         return (
             <div>
                 <h3>{this.state.user.name}</h3>
+                <h3>emai: {this.state.user.email}</h3>
+                <h3>password: {this.state.user.password}</h3>
+                <h3>age: {this.state.user.age}</h3>
+                <h3>gender: {this.state.user.gender}</h3>
                 <button onClick={this.deleteUser}>delete user</button>
             </div>
         )
