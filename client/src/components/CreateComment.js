@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 
-export default class Comment extends Component {
+export default class CreateComment extends Component {
     state = {
         // resource: {
         //     resource_name: '',
@@ -74,21 +74,9 @@ export default class Comment extends Component {
         return (
             <div>
                 <form onSubmit={this.createComment}>
-                    {/* <option value={this.state.users}>Select User: </option> */}
-                    {/* const dropdownOptions = this.props.options.map((option) =>
-                                    <option value={option} key={option} >{option}</option>,
-                                                    ); */}
-                    {/* <a className='dropdown-trigger btn' data-target='dropdown1'>Select a User:</a> */}
-                    {/* <a class='dropdown-trigger btn' href='#' data-target='dropdown1' onClick={this.triggerDropDown}>Drop Me!</a> */}
-                    {/* <ul id='dropdown1'className='dropdown-content'> */}
                     <ul>
                         {
                             this.state.users.map(user => (
-                                // <div key={user.id}>
-                                // <h2>{user.name}</h2>
-                                // </div>
-                                // <option key={user.id} value={user.name}>{user.name}</option>
-                                // <li><a>{user.name}</a></li>
                                 <div key={user.id} value={user.name}>{user.name}: {user.id}</div>
                             ))
                         }
@@ -96,29 +84,11 @@ export default class Comment extends Component {
                     <ul>
                         {
                             this.state.resources.map(resource => (
-                                // <div key={user.id}>
-                                // <h2>{user.name}</h2>
-                                // </div>
-                                // <option key={user.id} value={user.name}>{user.name}</option>
-                                // <li><a>{user.name}</a></li>
                                 <div key={resource.id} value={resource.resource_name}>{resource.resource_name}: {resource.id}</div>
                             ))
                         }
                     </ul>
-                    {/* <ul>
-                                    {
-                                        this.state.users.map(user => (
-                                            // <div key={user.id}>
-                                            // <h2>{user.name}</h2>
-                                            // </div>
-                                            // <option key={user.id} value={user.name}>{user.name}</option>
-                                            <p>{user.name}</p>
-                                        ))
-                                    }
-                                </ul> */}
                     <label htmlFor="comment">write your comment here: </label>
-                    {/* map first --> add option based on item of map */}
-                    {/* <option value={this.state.users} selected={this.state.selectedUser == this.state.user.value}>select user</option> */}
                     <input
                         id="comment"
                         type="text"

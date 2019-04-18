@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
-import Comment from './Comment';
+import CreateComment from './CreateComment';
 // import DisplayComment from './DisplayComment'
 
 const Pic = styled.img`
@@ -74,12 +74,6 @@ class Resource extends Component {
         }
     }
 
-    deleteComment = (event) => {
-        event.preventDefault()
-        axios.delete(`/api/comment/${this.props.match.params.id}/`)
-    }
-
-
     toggleCommentForm = () => {
         this.setState((state, props) => {
             return ({ isCommentFormDisplayed: !state.isCommentFormDisplayed })
@@ -93,6 +87,13 @@ class Resource extends Component {
                 this.state.comments.push(this.state.createdComment)
             })
     }
+
+    // deleteComment = (event) => {
+    //     event.preventDefault()
+    //     // need to determine which array the comment is in exactly
+    //     axios.delete(`/api/comment/${this.state.comments}.${arrayNumbervariable}/id`)
+    // }
+
 
     handleCommentChange = (event) => {
         const clonedCreatedComment = { ...this.state.createdComment }
@@ -130,6 +131,7 @@ class Resource extends Component {
         // console.log(this.state.comments)
         // console.log(this.state.createdComment)
         // console.log(this.props.match.params.id)
+        console.log(this.state.comments)
         if (this.state.redirectToResourceList === true) {
             return (<Redirect to={'/'} />)
         }
@@ -156,7 +158,6 @@ class Resource extends Component {
                     } */}
                     {this.state.comments.map(comment => (
                         <div key={comment.id}>
-                            {/* <h4>Comments:</h4> */}
                             <p>{comment.user}:</p>
                             <p>{comment.comment}</p>
                             <button onClick={this.deleteComment}>delete comment</button>
@@ -165,7 +166,7 @@ class Resource extends Component {
                     <button onClick={this.toggleCommentForm}>Add comment</button>
                     {
                         this.state.isCommentFormDisplayed ?
-                            <Comment />
+                            <CreateComment />
                             : null
                     }
                     <button onClick={this.toggleUpdateResource}>update resource</button>

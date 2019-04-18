@@ -11,11 +11,39 @@ const Wrapper = styled.div`
     .resourceDiv {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-end;
+        /* align-items: center; */
         margin: 30px;
     }
     margin-bottom: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    a {
+        text-decoration: none;
+        color: tomato;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 200px;
+        height: 40px;
+        border: 2px solid #53B1F8;
+        background-color: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: tomato;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        box-shadow: 3px 3px tomato;
+    }
+`
+
+const TileWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 `
 
 class ResourceList extends Component {
@@ -79,18 +107,20 @@ class ResourceList extends Component {
         return (
             <div>
                 <Wrapper>
-                    <h1>All Resources</h1>
+                    <TileWrapper>
+                    {/* <h1>All Resources</h1> */}
                     {this.state.resources.map(resource => (
                         <div className="resourceDiv" key={resource.id}>
-                            <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
                             <Pic src={resource.photo_url} alt="resourcePic"></Pic>
+                            <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
                         </div>
                     ))}
-                    <button onClick={this.toggleAddNewResourceForm}>Add a new resource</button>
+                    </TileWrapper>
+                    <button className="btn" onClick={this.toggleAddNewResourceForm}>Add a New Resource</button>
                     {
                         this.state.isAddNewResourceFormDisplayed ?
                             <div>
-                                <h3>Add a new resource:</h3>
+                                <h3>Add a New Resource:</h3>
                                 <form id="resource-form" onSubmit={this.handleCreateResource}>
                                     <label htmlFor="resource_name">Resource Name</label>
                                     <input
