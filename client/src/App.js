@@ -7,6 +7,7 @@ import CreateAccount from "./components/CreateAccount"
 import ShowUsers from './components/ShowUsers'
 import MapComponent from './components/MapComponent'
 import "./App.css";
+import AddComment from "./components/AddComment";
 
 class App extends Component {
     render() {
@@ -20,6 +21,7 @@ class App extends Component {
                       <Route exact path="/createAccount" component={CreateAccount}/>
                       <Route path="/resources/:id" component={Resource}/>
                       <Route path="/users" component={ShowUsers}/>
+                      <Route path="/addComment" component={AddComment}/>
                     </Switch>
                 </div>
             </Router>
