@@ -8,7 +8,78 @@ const Pic = styled.img`
     width: 200px;
 `
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 100px;
+    button {
+        width: 150px;
+        height: 40px;
+        border: 2px solid #53B1F8;
+        background-color: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: tomato;
+        border-radius: 5px;
+        margin: 10px;
+    }
+    button:hover {
+        box-shadow: 3px 3px tomato;
+    }
+    .delete {
+        /* border: 2px solid tomato; */
+        border: none;
+        color: #052C49;
+    }
+    .delete:hover {
+        /* box-shadow: 3px 3px #53B1F8; */
+        box-shadow: none;
+        color: tomato;
+    }
+    .update-resource-form {
+        border: 2px solid #53B1F8;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin: 50px;
+        padding: 20px;
+        label {
+            color: #282828;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            color: #282828;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 20px;
+            border: none;
+            border-bottom: 2px solid #53B1F8;
+        }
+        input[type="text"] {
+            font-size:16px;
+        }
+        h3 {
+            margin: 0;
+            color: tomato;
+        }
+        button {
+            width: 200px;
+            height: 40px;
+            border: 2px solid #53B1F8;
+            background-color: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: tomato;
+            border-radius: 5px;
+        }
+        button:hover {
+        box-shadow: 3px 3px tomato;
+    }
+    }
+    .resource-component {
+        margin: 10px;
+    }
 `
 
 
@@ -140,61 +211,73 @@ class Resource extends Component {
                     <h3>Contact Number: {this.state.resource.contact_number}</h3>
                     {this.state.comments.map(comment => (
                         <div key={comment.id}>
-                            <p>{comment.user}:</p>
-                            <p>{comment.comment}</p>
-                            <button onClick={this.deleteComment}>delete comment</button>
+                            <p>{comment.user}: {comment.comment}</p>
+                            <button className="delete" onClick={this.deleteComment}>Delete Comment</button>
                         </div>
                     ))}
-                    <button onClick={this.toggleCommentForm}>Add comment</button>
+                    <button onClick={this.toggleCommentForm}>Add Comment</button>
                     {
                         this.state.isCommentFormDisplayed ?
                             <CreateComment />
                             : null
                     }
-                    <button onClick={this.toggleUpdateResource}>update resource</button>
+                    <button onClick={this.toggleUpdateResource}>Update Resource</button>
                     {
                         this.state.isUpdateResourceFormDisplayed ?
                             <div>
-                                <h3>Update resource:</h3>
-                                <form id="resource-form" onSubmit={this.updateResource}>
-                                    <label htmlFor="resource_name">Resource Name</label>
-                                    <input
-                                        id="resource_name"
-                                        type="text"
-                                        name="resource_name"
-                                        onChange={this.handleUpdateChange}
-                                        value={this.state.resource.resource_name}
-                                    />
-                                    <label htmlFor="photo_url">Photo URL</label>
-                                    <input
-                                        id="photo_url"
-                                        type="text"
-                                        name="photo_url"
-                                        onChange={this.handleUpdateChange}
-                                        value={this.state.resource.photo_url}
-                                    />
-                                    <label htmlFor="address">Address</label>
-                                    <input
-                                        id="address"
-                                        type="text"
-                                        name="address"
-                                        onChange={this.handleUpdateChange}
-                                        value={this.state.resource.address}
-                                    />
-                                    <label htmlFor="contact_number">Contact Number</label>
-                                    <input
-                                        id="contact_number"
-                                        type="text"
-                                        name="contact_number"
-                                        onChange={this.handleUpdateChange}
-                                        value={this.state.resource.contact_number}
-                                    />
-                                    <button>update resource</button>
+                                <form class="update-resource-form" onSubmit={this.updateResource}>
+                                    <div className="resource-component">
+                                        <h3>Update resource:</h3>
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="resource_name">Resource Name: </label>
+                                        <input
+                                            id="resource_name"
+                                            type="text"
+                                            name="resource_name"
+                                            onChange={this.handleUpdateChange}
+                                            value={this.state.resource.resource_name}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="photo_url">Photo URL: </label>
+                                        <input
+                                            id="photo_url"
+                                            type="text"
+                                            name="photo_url"
+                                            onChange={this.handleUpdateChange}
+                                            value={this.state.resource.photo_url}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="address">Address: </label>
+                                        <input
+                                            id="address"
+                                            type="text"
+                                            name="address"
+                                            onChange={this.handleUpdateChange}
+                                            value={this.state.resource.address}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
+                                        <label htmlFor="contact_number">Contact Number: </label>
+                                        <input
+                                            id="contact_number"
+                                            type="text"
+                                            name="contact_number"
+                                            onChange={this.handleUpdateChange}
+                                            value={this.state.resource.contact_number}
+                                        />
+                                    </div>
+
+                                    <div className="resource-component">
+                                        <button>Update</button>
+                                    </div>
                                 </form>
                             </div>
                             : null
                     }
-                    <button onClick={this.deleteResource}>delete resource</button>
+                    <button className="delete" onClick={this.deleteResource}>Delete Resource</button>
                 </Wrapper>
             </div>
         );
