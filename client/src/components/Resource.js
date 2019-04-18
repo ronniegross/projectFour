@@ -91,8 +91,34 @@ class Resource extends Component {
     // deleteComment = (event) => {
     //     event.preventDefault()
     //     // need to determine which array the comment is in exactly
-    //     axios.delete(`/api/comment/${this.state.comments}.${arrayNumbervariable}/id`)
+    //     // this.state.comment[arrayNumberVariable]
+    //     // const arrayNumberVariable = {this.state.array[0].id}
+
+    //     axios.delete(`/api/comment/${arrayNumberVariable}`)
     // }
+
+    deleteComment = async (event) => {
+        // console.log(this.state)
+        try {
+            event.preventDefault()
+            this.state.comments.map(comment => (
+                axios.delete(`/api/comments/${comment.id}/`)
+            ))
+            // this.state.comments.map(comment => (
+                // axios.delete(`/api/comment/${comment.id}`
+                // console.log(comment.id)
+                // console.log(comment.key)
+                // if (comment.id == comment.key) {
+                    // axios.delete(`/api/comment/${comment.id}`)
+                // )
+            // })
+            // const arrayNumberVariable = this.state.array[0].id
+        }
+        catch (error) {
+            console.log(error)
+            this.setState({ error: error.message })
+        }
+    }
 
 
     handleCommentChange = (event) => {
@@ -131,7 +157,7 @@ class Resource extends Component {
         // console.log(this.state.comments)
         // console.log(this.state.createdComment)
         // console.log(this.props.match.params.id)
-        console.log(this.state.comments)
+        // console.log(this.state.comments)
         if (this.state.redirectToResourceList === true) {
             return (<Redirect to={'/'} />)
         }
@@ -140,8 +166,8 @@ class Resource extends Component {
                 <Wrapper>
                     <h1>{this.state.resource.resource_name}</h1>
                     <Pic src={this.state.resource.photo_url} alt="" />
-                    <h3>{this.state.resource.address}</h3>
-                    <h3>{this.state.resource.contact_number}</h3>
+                    <h3>Address: {this.state.resource.address}</h3>
+                    <h3>Contact Number: {this.state.resource.contact_number}</h3>
                     {/* <DisplayComment />  */}
                     {/* {
                         this.state.comments != null ?
