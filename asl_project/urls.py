@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.FrontendAppView.as_view()),  # New URL for the index route
     path('api/', include('asl_app.urls')),
-    re_path(r'^.*$', views.FrontendAppView.as_view()), # add this route as a catch all route
+    # re_path(r'^.*$', views.FrontendAppView.as_view()), # add this route as a catch all route
 
     # path('accounts/', include('django.contrib.auth.urls')),
 ]

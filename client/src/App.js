@@ -4,8 +4,9 @@ import ResourceList from "./components/ResourceList";
 import Resource from "./components/Resource";
 import NavBar from "./components/NavBar"
 import CreateAccount from "./components/CreateAccount"
-import ShowUsers from './components/ShowUsers'
+import Users from './components/Users'
 import MapComponent from './components/MapComponent'
+import SingleUser from './components/SingleUser'
 import "./App.css";
 // import Comment from "./components/Comment";
 
@@ -20,7 +21,9 @@ class App extends Component {
                       <Route exact path="/map" component={MapComponent}/>
                       <Route exact path="/createAccount" component={CreateAccount}/>
                       <Route path="/resources/:id" component={Resource}/>
-                      <Route path="/users" component={ShowUsers}/>
+                      {/* <Route path="/users" component={ShowUsers}/> */}
+                      <Route path="/useraccounts" component={Users}/>
+                      <Route path="/user/:userId" component={SingleUser}/>
                       {/* <Route path="/addComment" component={Comment}/> */}
                     </Switch>
                 </div>

@@ -102,7 +102,8 @@ export default class NavBar extends Component {
                                 <li className="logo"><img src="https://i.imgur.com/tFS2b17.png" alt="aslLogo" /></li>
                                 <li><Link to={'/numberindex'}> Number Index </Link></li>
                                 <li><Link to={'/mission'}> Mission </Link></li>
-                                <li><Link to={`/${this.props.userId}`}> Account Info </Link></li>
+                                {/* <li><Link to={`/${this.props.userId}`}> Account Info </Link></li> */}
+                                <li><Link to={'/useraccounts'}> User Accounts </Link></li>
                             </ul>
                         </div>
                     </nav>

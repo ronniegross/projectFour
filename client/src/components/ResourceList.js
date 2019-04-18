@@ -93,6 +93,7 @@ const TileWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 50px;
 `
 
 class ResourceList extends Component {
