@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
-import AddComment from './AddComment';
+import Comment from './Comment';
+// import DisplayComment from './DisplayComment'
 
 const Pic = styled.img`
     width: 200px;
@@ -14,12 +15,6 @@ const Wrapper = styled.div`
 
 class Resource extends Component {
     state = {
-        // resource: {
-        //     resource_name: '',
-        //     photo_url: '',
-        //     address: '',
-        //     contact_number: ''
-        // },
         resource: {},
         comments: [],
         isCommentFormDisplayed: false,
@@ -38,11 +33,18 @@ class Resource extends Component {
 
     fetchResource = async (resourceId) => {
         try {
-            const resourceResponse = await axios.get(`/api/resources/${resourceId}`)
+            const resourceResponse = await axios.get(`/api/resources/${resourceId}/`)
+            // console.log(resourceId)
             this.setState({
                 resource: resourceResponse.data,
-                comments: resourceResponse.data.comments,
+                comments: resourceResponse.data.comments
+
             })
+            // if (this.state.comments != null) {
+            //     this.setState({
+            //         comments: resourceResponse.data.comments
+            //     })
+            // }
         }
         catch (error) {
             console.log(error)
@@ -70,6 +72,11 @@ class Resource extends Component {
             console.log(err)
             this.setState({ error: err.message })
         }
+    }
+
+    deleteComment = (event) => {
+        event.preventDefault()
+        axios.delete(`/api/comment/${this.props.match.params.id}/`)
     }
 
 
@@ -118,21 +125,11 @@ class Resource extends Component {
         this.setState({ resource: clonedResource })
     }
 
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var elems = document.querySelectorAll('.dropdown-trigger');
-    //     var instances = M.Dropdown.init(elems, options);
-    //   });
-
-    // triggerDropDown = (event) => {
-    //     var elems = document.querySelectorAll('.dropdown-trigger');
-    //     // var instances = M.Dropdown.init(elems, options);
-    // }
-
 
     render() {
         // console.log(this.state.comments)
         // console.log(this.state.createdComment)
-        console.log(this.state.users)
+        // console.log(this.props.match.params.id)
         if (this.state.redirectToResourceList === true) {
             return (<Redirect to={'/'} />)
         }
@@ -141,62 +138,34 @@ class Resource extends Component {
                 <Wrapper>
                     <h1>{this.state.resource.resource_name}</h1>
                     <Pic src={this.state.resource.photo_url} alt="" />
-                    {/* <img src={this.state.resource.photo_url} alt=""/> */}
                     <h3>{this.state.resource.address}</h3>
                     <h3>{this.state.resource.contact_number}</h3>
+                    {/* <DisplayComment />  */}
+                    {/* {
+                        this.state.comments != null ?
+                            <div>
+                                {this.state.comments.map(comment => (
+                                    <div key={comment.id}>
+                                        <h4>Comments:</h4>
+                                        <p>{comment.comment}</p>
+                                        <button onClick={this.deleteComment}>delete comment</button>
+                                    </div>
+                                ))}
+                            </div>
+                            : null
+                    } */}
                     {this.state.comments.map(comment => (
                         <div key={comment.id}>
-                            <h4>Comments:</h4>
+                            {/* <h4>Comments:</h4> */}
+                            <p>{comment.user}:</p>
                             <p>{comment.comment}</p>
+                            <button onClick={this.deleteComment}>delete comment</button>
                         </div>
                     ))}
                     <button onClick={this.toggleCommentForm}>Add comment</button>
                     {
                         this.state.isCommentFormDisplayed ?
-                            // <form onSubmit={this.createComment}>
-                            //     {/* <option value={this.state.users}>Select User: </option> */}
-                            //     {/* const dropdownOptions = this.props.options.map((option) =>
-                            //         <option value={option} key={option} >{option}</option>,
-                            //                         ); */}
-                            //     {/* <a className='dropdown-trigger btn' data-target='dropdown1'>Select a User:</a> */}
-                            //     {/* <a class='dropdown-trigger btn' href='#' data-target='dropdown1' onClick={this.triggerDropDown}>Drop Me!</a> */}
-                            //     {/* <ul id='dropdown1'className='dropdown-content'> */}
-                            //     <ul>
-                            //         {
-                            //             this.state.users.map(user => (
-                            //                 // <div key={user.id}>
-                            //                 // <h2>{user.name}</h2>
-                            //                 // </div>
-                            //                 // <option key={user.id} value={user.name}>{user.name}</option>
-                            //                 // <li><a>{user.name}</a></li>
-                            //                 <div key={user.id} value={user.name}>{user.name}</div>
-                            //             ))
-                            //         }
-                            //     </ul>
-                            //     {/* <ul>
-                            //         {
-                            //             this.state.users.map(user => (
-                            //                 // <div key={user.id}>
-                            //                 // <h2>{user.name}</h2>
-                            //                 // </div>
-                            //                 // <option key={user.id} value={user.name}>{user.name}</option>
-                            //                 <p>{user.name}</p>
-                            //             ))
-                            //         }
-                            //     </ul> */}
-                            //     <label htmlFor="comment">write your comment here: </label>
-                            //     {/* map first --> add option based on item of map */}
-                            //     {/* <option value={this.state.users} selected={this.state.selectedUser == this.state.user.value}>select user</option> */}
-                            //     <input
-                            //         id="comment"
-                            //         type="text"
-                            //         name="comment"
-                            //         onChange={this.handleCommentChange}
-                            //         value={this.state.createdComments}
-                            //     />
-                            //     <button>submit</button>
-                            // </form>
-                            <AddComment />
+                            <Comment />
                             : null
                     }
                     <button onClick={this.toggleUpdateResource}>update resource</button>

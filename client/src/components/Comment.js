@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 
-export default class AddComment extends Component {
+export default class Comment extends Component {
     state = {
         // resource: {
         //     resource_name: '',
@@ -22,7 +22,7 @@ export default class AddComment extends Component {
         selectedUser: {}
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.fetchUsers()
         this.fetchResources()
     }
