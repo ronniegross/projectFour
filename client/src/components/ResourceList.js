@@ -11,7 +11,9 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* justify-content: space-around; */
     align-items: center;
+    /* align-content: space-around; */
     .resourceDiv {
         display: flex;
         flex-direction: column;
@@ -87,12 +89,19 @@ const Wrapper = styled.div`
     .resource-component {
         margin: 10px;
     }
+    @media (max-width: 1100px) {
+        a {
+            padding: 0 10px 0 10px;
+        }
+    }
 `
 
 const TileWrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
+    /* align-content: space-around; */
     margin-bottom: 50px;
 `
 

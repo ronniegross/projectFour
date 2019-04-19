@@ -101,6 +101,7 @@ const Wrapper = styled.div`
         color: #052C49;
         margin: 0;
         padding: 0;
+        font-size: 16px;
         /* color: #53B1F8; */
         /* text-align: center; */
     }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+    margin-top: 40px;
     a {
         color: #052C49;
         text-decoration: none;
