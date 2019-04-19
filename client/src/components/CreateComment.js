@@ -48,6 +48,9 @@ const Wrapper = styled.div`
     .resource-component {
         margin: 10px;
     }
+    ul {
+        list-style: none
+    }
 `
 
 export default class CreateComment extends Component {
@@ -124,15 +127,19 @@ export default class CreateComment extends Component {
                     <div className="comment-form">
                         <form onSubmit={this.createComment}>
                             <div className="resource-component">
+                                <button>Show All Users</button>
                                 <ul>
                                     {
                                         this.state.users.map(user => (
+                                            // <button key={user.id} value={user.id}>{user.name}: {user.id}</button>
                                             <div key={user.id} value={user.name}>{user.name}: {user.id}</div>
                                         ))
                                     }
                                 </ul>
                             </div>
                             <div className="resource-component">
+                            {/* bring this in from this.props.match.params.id */}
+                                {/* <button>Show All Users</button> */}
                                 <ul>
                                     {
                                         this.state.resources.map(resource => (
@@ -144,6 +151,9 @@ export default class CreateComment extends Component {
                             <div className="resource-component">
                                 <h3>Add Comment: </h3>
                             </div>
+                            {/* <div className="resource-component">
+                                
+                            </div> */}
                             <div className="resource-component">
                                 <label htmlFor="comment">Write Your Comment Here: </label>
                                 <input

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import CreateComment from './CreateComment';
 
@@ -216,10 +217,11 @@ class Resource extends Component {
                     <h3>Address: {this.state.resource.address}</h3>
                     <h3>Contact Number: {this.state.resource.contact_number}</h3>
                     {this.state.comments.map(comment => (
-                        <div key={comment.id}>
-                            <p>{comment.user}: {comment.comment}</p>
-                            <button className="delete" onClick={this.deleteComment}>Delete Comment</button>
-                        </div>
+                        <h3><Link key={comment.id} to={`/comment/${comment.id}`} >{comment.comment}</Link></h3>
+                        // <div key={comment.id}>
+                        //     <p>{comment.user}: {comment.comment}</p>
+                        //     <button className="delete" onClick={this.deleteComment}>Delete Comment</button>
+                        // </div>
                     ))}
                     <button onClick={this.toggleCommentForm}>Add Comment</button>
                     {
