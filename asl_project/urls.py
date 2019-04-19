@@ -16,12 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.urls import path, re_path, include
+from rest_framework_jwt.views import obtain_jwt_token
+# from .views import current_user, UserList
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.FrontendAppView.as_view()),  # New URL for the index route
     path('api/', include('asl_app.urls')),
+    path('token-auth/', obtain_jwt_token),
+
+    # path('current_user/', current_user),
+    # path('users/', UserList.as_view()),
+
+    path('asl_app/', include('asl_app.urls')),
+
     re_path(r'^.*$', views.FrontendAppView.as_view()), # add this route as a catch all route
 
     # path('accounts/', include('django.contrib.auth.urls')),

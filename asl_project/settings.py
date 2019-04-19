@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
-    'asl_app'
+    'asl_app',
+    # 'asl_app.apps.CoreConfig'
+    # 'asl_app.apps.Asl_appConfig'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        # ...
+    'corsheaders.middleware.CorsMiddleware', # Note that this needs to be placed above CommonMiddleware
+    'django.middleware.common.CommonMiddleware', # This should already exist
+    # ...
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+
 ]
 
 ROOT_URLCONF = 'asl_project.urls'
@@ -139,21 +149,29 @@ STATICFILES_DIRS = [
 import django_heroku
 django_heroku.settings(locals())
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.AllowAny',
-#     )
-#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
-#     #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-#     #     'rest_framework.authentication.BasicAuthentication',
-#     #     'rest_framework.authentication.SessionAuthentication',
-#     # )
-# }
+
+#'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+#...
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
-    )
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
 }
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+
+
 LOGIN_REDIRECT_URL = ''
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'mysite.utils.my_jwt_response_handler'
+}
+
