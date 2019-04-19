@@ -172,7 +172,7 @@ class Users extends Component {
                     ))}
                     <button onClick={this.toggleUserForm} className="btn">Create User</button>
                     {
-                        this.isUserFormDisplayed ?
+                        this.state.isUserFormDisplayed ?
                             <div>
                                 <form className="create-user-form" onSubmit={this.handleSignUp}>
                                     <div className="resource-component">
