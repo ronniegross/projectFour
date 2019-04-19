@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components'
 
+const Wrapper = styled.div`
+    a {
+        color: #052C49;
+        text-decoration: none;
+    }
+    a:hover {
+        color: tomato;
+    }
+    .resourceDiv {
+        margin: 10px;
+    }
+`
+
 export default class NumberIndex extends Component {
     state = {
         resources: [],
@@ -10,10 +23,10 @@ export default class NumberIndex extends Component {
     }
 
     componentDidMount() {
-        this.fetchResources().then(()=>{
+        this.fetchResources().then(() => {
             this.sortResources()
         })
-       
+
     }
 
     fetchResources = async () => {
@@ -28,12 +41,12 @@ export default class NumberIndex extends Component {
     }
 
     sortResources = () => {
-        let alphabeticalResourcesSorted = this.state.resources.sort(function(a, b){
-            if(a.resource_name < b.resource_name) { return -1; }
-            if(a.resource_name > b.resource_name) { return 1; }
+        let alphabeticalResourcesSorted = this.state.resources.sort(function (a, b) {
+            if (a.resource_name < b.resource_name) { return -1; }
+            if (a.resource_name > b.resource_name) { return 1; }
             return 0;
-          })
-        this.setState({alphabeticalResources: alphabeticalResourcesSorted})
+        })
+        this.setState({ alphabeticalResources: alphabeticalResourcesSorted })
     }
 
 
@@ -41,12 +54,14 @@ export default class NumberIndex extends Component {
     render() {
         return (
             <div>
-                {this.state.resources.map(resource => (
-                    <div className="resourceDiv" key={resource.id}>
-                        {/* <Link to={`/resources/${resource.id}`}><Pic src={resource.photo_url} alt="resourcePic"></Pic></Link> */}
-                        <Link to={`/resources/${resource.id}`} >{resource.resource_name}: {resource.contact_number}</Link>
-                    </div>
-                ))}
+                <Wrapper>
+                    {this.state.resources.map(resource => (
+                        <div className="resourceDiv" key={resource.id}>
+                            {/* <Link to={`/resources/${resource.id}`}><Pic src={resource.photo_url} alt="resourcePic"></Pic></Link> */}
+                            <Link to={`/resources/${resource.id}`} >{resource.resource_name}: {resource.contact_number}</Link>
+                        </div>
+                    ))}
+                </Wrapper>
             </div>
         )
     }
