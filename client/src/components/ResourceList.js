@@ -161,7 +161,7 @@ class ResourceList extends Component {
                         {/* <h1>All Resources</h1> */}
                         {this.state.resources.map(resource => (
                             <div className="resourceDiv" key={resource.id}>
-                                <Pic src={resource.photo_url} alt="resourcePic"></Pic>
+                                <Link to={`/resources/${resource.id}`}><Pic src={resource.photo_url} alt="resourcePic"></Pic></Link>
                                 <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
                             </div>
                         ))}

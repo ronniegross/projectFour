@@ -13,6 +13,12 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 100px;
+    h1 {
+        color: #052C49;
+    }
+    h3 {
+        color: #052C49;
+    }
     button {
         width: 150px;
         height: 40px;
