@@ -9,6 +9,7 @@ import MapComponent from './components/MapComponent'
 import SingleUser from './components/SingleUser'
 import "./App.css";
 import SingleComment from './components/SingleComment'
+import NumberIndex from './components/NumberIndex'
 // import Comment from "./components/Comment";
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
                       <Route path="/useraccounts" component={Users}/>
                       <Route path="/user/:userId" component={SingleUser}/>
                       <Route path="/comment/:commentId" component={SingleComment}/>
+                      <Route path="/numberindex" component={NumberIndex}/>
                       {/* <Route path="/addComment" component={Comment}/> */}
                     </Switch>
                 </div>
