@@ -31,10 +31,29 @@ export default class SingleComment extends Component {
         }
     }
 
+    deleteComment = async (commentId) => {
+        try {
+            // console.log(userId)
+            const commentId = this.props.match.params.commentId;
+            axios.delete(`/api/comments/${commentId}/`).then(res => {
+                this.setState({ redirectToHome: true })
+            })
+
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
     render() {
+        if (this.state.redirectToHome === true) {
+            return (<Redirect to={'/'} />)
+        }
         return (
             <div>
+                {/* <h2>{this.state.comment.id}</h2> */}
                 <h2>{this.state.comment.comment}</h2>
+                <button onClick={this.deleteComment}>Delete Comment</button>
             </div>
         )
     }
