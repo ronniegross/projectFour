@@ -4,6 +4,10 @@ import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     .comment-form {
         border: 2px solid #53B1F8;
         border-radius: 5px;
@@ -47,9 +51,29 @@ const Wrapper = styled.div`
     }
     .resource-component {
         margin: 10px;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-content: center; */
     }
     ul {
         list-style: none
+    }
+    .dropdownTrigger {
+        border: 2px solid #53B1F8;
+        padding: 5px;
+        width: 150px;
+        align-self: center;
+    }
+    .dropdownTrigger:Hover {
+        color: #53B1F8;
+    }
+    .user-dropdown {
+        display: flex;
+        flex-direction: column;
+    }
+    li {
+        margin: 0 auto;
+        padding: 0 auto;
     }
 `
 
@@ -69,7 +93,8 @@ export default class CreateComment extends Component {
         redirectToResourceList: false,
         isUpdateResourceFormDisplayed: false,
         users: [],
-        selectedUser: {}
+        selectedUser: {},
+        isShowUsersDisplayed: false
     }
 
     componentDidMount() {
@@ -119,6 +144,12 @@ export default class CreateComment extends Component {
         this.setState({ createdComment: clonedCreatedComment })
     }
 
+    toggleShowUsers = () => {
+        this.setState((state, props) => {
+            return ({ isShowUsersDisplayed: !state.isShowUsersDisplayed })
+        })
+    }
+
     render() {
         // console.log(this.state.resources)
         return (
@@ -126,19 +157,26 @@ export default class CreateComment extends Component {
                 <Wrapper>
                     <div className="comment-form">
                         <form onSubmit={this.createComment}>
-                            <div className="resource-component">
-                                <button>Show All Users</button>
-                                <ul>
-                                    {
-                                        this.state.users.map(user => (
-                                            // <button key={user.id} value={user.id}>{user.name}: {user.id}</button>
-                                            <div key={user.id} value={user.name}>{user.name}: {user.id}</div>
-                                        ))
-                                    }
-                                </ul>
+                            <div className="resource-component user-dropdown">
+                                {/* <button onClick={this.toggleShowUsers}>Select A User</button> */}
+                                <div className="dropdownTrigger" onClick={this.toggleShowUsers}>Select A User</div>
+                                {
+                                    this.state.isShowUsersDisplayed ?
+                                        <div>
+                                            <ul>
+                                                {
+                                                    this.state.users.map(user => (
+                                                        // <button key={user.id} value={user.id}>{user.name}: {user.id}</button>
+                                                        <li key={user.id} value={user.id}>{user.name}: {user.id}</li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </div>
+                                        : null
+                                }
                             </div>
                             <div className="resource-component">
-                            {/* bring this in from this.props.match.params.id */}
+                                {/* bring this in from this.props.match.params.id */}
                                 {/* <button>Show All Users</button> */}
                                 <ul>
                                     {
