@@ -1,4 +1,5 @@
-from asl_app.apps.serializers import UserSerializer
+# from asl_app.apps.serializers import UserSerializer
+from asl_app.serializers import UserSerializer
 
 
 def my_jwt_response_handler(token, user=None, request=None):

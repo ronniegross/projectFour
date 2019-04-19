@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'asl_app',
     # 'asl_app.apps.CoreConfig'
+    'asl_app.apps.AslAppConfig',
     # 'asl_app.apps.Asl_appConfig'
 ]
 
@@ -172,6 +173,6 @@ CORS_ORIGIN_WHITELIST = (
 LOGIN_REDIRECT_URL = ''
 
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'mysite.utils.my_jwt_response_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'asl_project.utils.my_jwt_response_handler'
 }
 

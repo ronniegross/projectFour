@@ -9,6 +9,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        'admin', 
+        'name_of_last_migration_in_admin_app'
     ]
 
     operations = [
