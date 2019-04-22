@@ -108,6 +108,16 @@ const Wrapper = styled.div`
             padding: 0 10px 0 10px;
         }
     }
+    @media (max-width: 800px) {
+        .resource-component {
+            display: flex;
+            flex-direction: column;
+        }
+        button {
+            align-items: center;
+            justify-content: center;
+        }
+    }
 `
 
 const TileWrapper = styled.div`
@@ -249,7 +259,7 @@ class ResourceList extends Component {
                                         />
                                     </div>
                                     <div className="resource-component">
-                                        <button className="resource-component">Submit new resource</button>
+                                        <button className="resource-component">Submit New Resource</button>
                                     </div>
                                 </form>
                             </div>
