@@ -45,11 +45,13 @@ const Wrapper = styled.div`
         margin: 50px;
         padding: 20px;
         label {
-            color: #282828;
+            /* color: #282828; */
+            color: #052C49;
             font-family: Arial, Helvetica, sans-serif;
         }
         input {
-            color: #282828;
+            /* color: #282828; */
+            color: tomato;
             font-family: Arial, Helvetica, sans-serif;
             height: 20px;
             /* border-radius: 5px; */
@@ -87,10 +89,12 @@ const Wrapper = styled.div`
         font-size: 18px;
     }
     .create-user-form label {
-        color: tomato;
+        /* color: tomato; */
+        color: #052C49;
     }
     .create-user-form input {
-        color: #052C49;
+        /* color: #052C49; */
+        color: tomato;
     }
     @media (max-width: 800px) {
         .create-user-form {

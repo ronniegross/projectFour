@@ -70,12 +70,14 @@ const Wrapper = styled.div`
         margin: 50px;
         padding: 20px;
         label {
-            color: #282828;
+            /* color: #282828; */
+            color: #052C49;
             /* color: tomato; */
             font-family: Arial, Helvetica, sans-serif;
         }
         input {
-            color: #282828;
+            /* color: #282828; */
+            color: tomato;
             font-family: Arial, Helvetica, sans-serif;
             height: 20px;
             border: none;
@@ -113,14 +115,14 @@ const Wrapper = styled.div`
     }
     .update-resource-form label {
         /* color: #052C49; */
-        color: tomato;
+        /* color: tomato; */
         /* font-weight: 800; */
         /* text-decoration: underline; */
         /* color: tomato; */
     }
     .update-resource-form input {
-        color: #052C49;
-        border-radius: none;
+        /* color: #052C49; */
+        /* border-radius: none; */
         /* color: tomato; */
     }
     @media (max-width: 800px) {

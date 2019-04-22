@@ -22,7 +22,7 @@ export default class Mission extends Component {
                 <Wrapper>
                     <h2>Mission</h2>
                     <div className="mission-container">
-                        The goal of the Atlanta Shelter Resource is to create a compiled list of resources for the Atlanta homeless community. Users are able to view a quick list of resources, the comments and reviews other folks have left on those resources, and are able to add their own resources and comments. Resources include shelters and homeless friendly businesses within the Atlanta community. Our mission is to make finding shelter and comfort as easy as possible for those in need.
+                        The goal of the Atlanta Shelter Resource is to create a compiled list of resources for the Atlanta homeless community. Users are able to view a list of resources, the comments and reviews other folks have left on those resources, and are able to add their own resources and comments. Resources include shelters and homeless friendly businesses within the Atlanta community. Our mission is to make finding shelter and comfort as easy as possible for those in need.
                     </div>
                 </Wrapper>
             </div>
