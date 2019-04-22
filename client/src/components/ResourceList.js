@@ -23,7 +23,9 @@ const Wrapper = styled.div`
     }
     margin-bottom: 100px;
     font-family: Arial, Helvetica, sans-serif;
-
+    button {
+        background-color: white;
+    }
     a {
         text-decoration: none;
         color: tomato;

@@ -14,6 +14,9 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 100px;
+    button {
+        background-color: white;
+    }
     h1 {
         color: #052C49;
     }
@@ -44,6 +47,7 @@ const Wrapper = styled.div`
         /* color: tomato; */
         text-decoration: none;
         margin: 10px;
+        background-color: white;
     }
     a:hover {
         /* color: #052C49; */

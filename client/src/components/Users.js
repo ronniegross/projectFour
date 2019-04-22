@@ -11,6 +11,9 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 100px;
+    button {
+        background-color: white;
+    }
     h2 {
         color: tomato;
     }

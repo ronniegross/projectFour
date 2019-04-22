@@ -8,6 +8,9 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    button {
+        background-color: white;
+    }
     .comment-form {
         border: 2px solid #53B1F8;
         border-radius: 5px;
