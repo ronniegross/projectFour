@@ -56,25 +56,33 @@ const Wrapper = styled.div`
         /* align-content: center; */
     }
     ul {
-        list-style: none
+        list-style: none;
+        padding: 0;
     }
     .dropdownTrigger {
         border: 2px solid #53B1F8;
         padding: 5px;
         width: 150px;
         align-self: center;
+        border-radius: 5px;
+        color: #052C49;
     }
     .dropdownTrigger:Hover {
-        color: #53B1F8;
+        /* color: #53B1F8; */
+        box-shadow: 3px 3px tomato;
     }
-    .user-dropdown {
+    .dropdown {
         display: flex;
         flex-direction: column;
     }
     li {
-        margin: 0 auto;
-        padding: 0 auto;
+        /* margin: 0 auto;
+        padding: 0 auto; */
+        color: #052C49;
     }
+    /* .userBlock {
+        margin: 0 auto;
+    } */
 `
 
 export default class CreateComment extends Component {
@@ -94,7 +102,10 @@ export default class CreateComment extends Component {
         isUpdateResourceFormDisplayed: false,
         users: [],
         selectedUser: {},
-        isShowUsersDisplayed: false
+        isShowUsersDisplayed: false,
+        isShowResourcesDisplayed: false,
+        userId: '',
+        resourceId: ''
     }
 
     componentDidMount() {
@@ -131,7 +142,11 @@ export default class CreateComment extends Component {
     }
 
     createComment = () => {
-        axios.post('/api/comments/', this.state.createdComment) // might need to make a duplicate state here...
+        axios.post('/api/comments/', {
+            resource: parseInt(this.props.resourceId),
+            user: parseInt(this.state.userId),
+            comment: this.state.createdComment.comment
+        }) // might need to make a duplicate state here...
             .then(res => {
                 this.setState({ createdComment: res.data })
                 this.state.comments.push(this.state.createdComment)
@@ -150,14 +165,26 @@ export default class CreateComment extends Component {
         })
     }
 
+    toggleShowResources = () => {
+        this.setState((state, props) => {
+            return ({ isShowResourcesDisplayed: !state.isShowResourcesDisplayed })
+        })
+    }
+
+    saveUserId = (event) => {
+        const clonedUserId = { ...this.state.userId }
+        clonedUserId[event.target.name] = event.target.value
+        this.setState({ userId: event.target.value })
+        console.log(event.target.value)
+    }
+
     render() {
-        // console.log(this.state.resources)
         return (
             <div>
                 <Wrapper>
                     <div className="comment-form">
                         <form onSubmit={this.createComment}>
-                            <div className="resource-component user-dropdown">
+                            <div className="resource-component dropdown">
                                 {/* <button onClick={this.toggleShowUsers}>Select A User</button> */}
                                 <div className="dropdownTrigger" onClick={this.toggleShowUsers}>Select A User</div>
                                 {
@@ -167,7 +194,9 @@ export default class CreateComment extends Component {
                                                 {
                                                     this.state.users.map(user => (
                                                         // <button key={user.id} value={user.id}>{user.name}: {user.id}</button>
-                                                        <li key={user.id} value={user.id}>{user.name}: {user.id}</li>
+                                                        // <div className="userBlock">
+                                                        <li onClick={this.saveUserId} className="userId" key={user.id} value={user.id}>{user.name}: {user.id}</li>
+                                                        // </div>
                                                     ))
                                                 }
                                             </ul>
@@ -175,16 +204,23 @@ export default class CreateComment extends Component {
                                         : null
                                 }
                             </div>
-                            <div className="resource-component">
+                            <div className="resource-component dropdown">
+                                <div className="dropdownTrigger" onClick={this.toggleShowResources}>Select A Resource</div>
                                 {/* bring this in from this.props.match.params.id */}
                                 {/* <button>Show All Users</button> */}
-                                <ul>
-                                    {
-                                        this.state.resources.map(resource => (
-                                            <div key={resource.id} value={resource.resource_name}>{resource.resource_name}: {resource.id}</div>
-                                        ))
-                                    }
-                                </ul>
+                                {
+                                    this.state.isShowResourcesDisplayed ?
+                                        <div>
+                                            <ul>
+                                                {
+                                                    this.state.resources.map(resource => (
+                                                        <li className="resourceId" key={resource.id} value={resource.resource_name}>{resource.resource_name}: {resource.id}</li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </div>
+                                        : null
+                                }
                             </div>
                             <div className="resource-component">
                                 <h3>Add Comment: </h3>

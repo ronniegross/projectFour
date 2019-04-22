@@ -20,6 +20,9 @@ const Wrapper = styled.div`
     h3 {
         color: #052C49;
     }
+    h3.comment-lable  {
+        margin-bottom: 0;
+    }
     button {
         width: 150px;
         height: 40px;
@@ -33,6 +36,13 @@ const Wrapper = styled.div`
     }
     button:hover {
         box-shadow: 3px 3px tomato;
+    }
+    a {
+        color: #052C49;
+        text-decoration: none;
+    }
+    a:hover {
+        color: tomato;
     }
     .delete {
         /* border: 2px solid tomato; */
@@ -216,8 +226,9 @@ class Resource extends Component {
                     <Pic src={this.state.resource.photo_url} alt="" />
                     <h3>Address: {this.state.resource.address}</h3>
                     <h3>Contact Number: {this.state.resource.contact_number}</h3>
+                    <h3 className="comment-lable">Comments: </h3>
                     {this.state.comments.map(comment => (
-                        <h3><Link key={comment.id} to={`/comment/${comment.id}`} >{comment.comment}</Link></h3>
+                        <h4><Link key={comment.id} to={`/comment/${comment.id}`} >"{comment.comment}"</Link></h4>
                         // <div key={comment.id}>
                         //     <p>{comment.user}: {comment.comment}</p>
                         //     <button className="delete" onClick={this.deleteComment}>Delete Comment</button>
@@ -226,7 +237,7 @@ class Resource extends Component {
                     <button onClick={this.toggleCommentForm}>Add Comment</button>
                     {
                         this.state.isCommentFormDisplayed ?
-                            <CreateComment />
+                            <CreateComment resourceId={this.props.match.params.id}/>
                             : null
                     }
                     <button onClick={this.toggleUpdateResource}>Update Resource</button>
