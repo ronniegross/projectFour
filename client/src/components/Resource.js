@@ -34,6 +34,7 @@ const Wrapper = styled.div`
         color: tomato;
         border-radius: 5px;
         margin: 20px 10px 10px 10px;
+        cursor: pointer;
     }
     button:hover {
         box-shadow: 3px 3px tomato;
@@ -52,6 +53,8 @@ const Wrapper = styled.div`
         /* border: 2px solid tomato; */
         border: none;
         color: #052C49;
+        cursor: pointer;
+        text-decoration: underline;
     }
     .delete:hover {
         /* box-shadow: 3px 3px #53B1F8; */
@@ -109,9 +112,12 @@ const Wrapper = styled.div`
     }
     .update-resource-form label {
         color: #052C49;
+        /* text-decoration: underline; */
+        /* color: tomato; */
     }
     .update-resource-form input {
         color: #052C49;
+        /* color: tomato; */
     }
 `
 

@@ -31,6 +31,7 @@ const Wrapper = styled.div`
         color: tomato;
         border-radius: 5px;
         margin-top: 20px;
+        cursor: pointer;
     }
     .btn:hover {
         box-shadow: 3px 3px tomato;
@@ -71,6 +72,8 @@ const Wrapper = styled.div`
             font-size: 16px;
             color: tomato;
             border-radius: 5px;
+            cursor: pointer;
+            
         }
         button:hover {
         box-shadow: 3px 3px tomato;

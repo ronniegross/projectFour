@@ -20,6 +20,8 @@ const Wrapper = styled.div`
             /* color: tomato; */
             border-radius: 5px;
             color: #052C49;
+            text-decoration: underline;
+            cursor: pointer;
         }
     button:hover {
         color: tomato;

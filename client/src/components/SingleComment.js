@@ -3,6 +3,24 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 
+const Wrapper = styled.div`
+    h2 {
+        /* color: #052C49; */
+        color: tomato;
+    }
+    button {
+        border: none;
+        color: #052C49;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    button:hover {
+        color: tomato;
+    }
+`
+
 export default class SingleComment extends Component {
     state = {
         redirectToHome: false,
@@ -51,9 +69,11 @@ export default class SingleComment extends Component {
         }
         return (
             <div>
-                {/* <h2>{this.state.comment.id}</h2> */}
-                <h2>{this.state.comment.comment}</h2>
-                <button onClick={this.deleteComment}>Delete Comment</button>
+                <Wrapper>
+                    {/* <h2>{this.state.comment.id}</h2> */}
+                    <h2>"{this.state.comment.comment}"</h2>
+                    <button onClick={this.deleteComment}>Delete Comment</button>
+                </Wrapper>
             </div>
         )
     }
