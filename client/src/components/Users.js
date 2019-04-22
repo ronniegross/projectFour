@@ -165,7 +165,7 @@ class Users extends Component {
                     {this.state.users.map(user => (
                         <div key={user.id}>
                             {/* <Link to={`/users/${user.id}`} >{user.name}: {user.id}</Link> */}
-                            <h3><Link to={`/user/${user.id}`} >{user.name}: {user.id}</Link></h3>
+                            <h3><Link to={`/user/${user.id}`} >{user.name}</Link></h3>
                             {/* <h2>{user.name}</h2> */}
                             {/* <button onClick={this.deleteUser}>delete user</button> */}
                         </div>
