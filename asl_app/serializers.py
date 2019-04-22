@@ -11,7 +11,7 @@ class ResourceSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     class Meta:
         model = Resource
-        fields = ('id', 'resource_name', 'photo_url', 'address', 'contact_number', 'comments')
+        fields = ('id', 'resource_name', 'photo_url', 'address', 'url', 'contact_number', 'comments')
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -7,9 +7,12 @@ const Wrapper = styled.div`
     margin-top: 40px;
     a {
         color: #052C49;
+        /* color: tomato; */
         text-decoration: none;
+        margin: 20px 0 5px 0;
     }
     a:hover {
+        /* color: #052C49; */
         color: tomato;
     }
     .resourceDiv {
@@ -17,6 +20,16 @@ const Wrapper = styled.div`
     }
     h2 {
         color: tomato;
+    }
+    h4 {
+        color: #052C49;
+        /* color: tomato; */
+        margin: 20px 0 5px 0;
+    }
+    p {
+        margin: 0;
+        color: 282828;
+        font-family: Arial, Helvetica, sans-serif;
     }
 `
 
@@ -63,7 +76,8 @@ export default class NumberIndex extends Component {
                     {this.state.resources.map(resource => (
                         <div className="resourceDiv" key={resource.id}>
                             {/* <Link to={`/resources/${resource.id}`}><Pic src={resource.photo_url} alt="resourcePic"></Pic></Link> */}
-                            <Link to={`/resources/${resource.id}`} >{resource.resource_name}: {resource.contact_number}</Link>
+                            <h4><Link to={`/resources/${resource.id}`} >{resource.resource_name}: </Link></h4>
+                            <p>{resource.contact_number}</p>
                         </div>
                     ))}
                 </Wrapper>

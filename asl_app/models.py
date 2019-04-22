@@ -4,6 +4,7 @@ class Resource(models.Model):
     resource_name = models.CharField(max_length=255)
     photo_url = models.CharField(max_length=400)
     address = models.CharField(max_length=400)
+    url = models.CharField(max_length=400, default='None')
     contact_number = models.CharField(max_length=255)
 
     def __str__(self):

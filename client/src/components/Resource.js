@@ -264,6 +264,9 @@ class Resource extends Component {
                     <div className="address-contact">
                         <h3>Contact Number: </h3><h4>{this.state.resource.contact_number}</h4>
                     </div>
+                    <div className="address-contact">
+                        <h3>Link: </h3><h4>{this.state.resource.url}</h4>
+                    </div>
                     <h3 className="comment-lable">Comments: </h3>
                     {this.state.comments.map(comment => (
                         <Link key={comment.id} to={`/comment/${comment.id}`} >"{comment.comment}"</Link>
@@ -326,7 +329,16 @@ class Resource extends Component {
                                             value={this.state.resource.contact_number}
                                         />
                                     </div>
-
+                                    <div className="resource-component">
+                                        <label htmlFor="url">Link: </label>
+                                        <input
+                                            id="url"
+                                            type="text"
+                                            name="url"
+                                            onChange={this.handleUpdateChange}
+                                            value={this.state.resource.url}
+                                        />
+                                    </div>
                                     <div className="resource-component">
                                         <button>Update</button>
                                     </div>
