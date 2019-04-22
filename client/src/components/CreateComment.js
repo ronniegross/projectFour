@@ -22,7 +22,8 @@ const Wrapper = styled.div`
             font-family: Arial, Helvetica, sans-serif;
         }
         input {
-            color: #282828;
+            /* color: #282828; */
+            color: tomato;
             font-family: Arial, Helvetica, sans-serif;
             height: 20px;
             /* border-radius: 5px; */

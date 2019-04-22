@@ -120,7 +120,13 @@ const Wrapper = styled.div`
     }
     .update-resource-form input {
         color: #052C49;
+        border-radius: none;
         /* color: tomato; */
+    }
+    @media (max-width: 800px) {
+        button {
+            height: 50px;
+        }
     }
 `
 

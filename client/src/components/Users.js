@@ -92,6 +92,14 @@ const Wrapper = styled.div`
     .create-user-form input {
         color: #052C49;
     }
+    @media (max-width: 800px) {
+        .create-user-form {
+            width: 170px;
+        }
+        .create-user-form button {
+            max-width: 150px;
+        }
+    }
 `
 
 class Users extends Component {
