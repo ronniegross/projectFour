@@ -53,7 +53,7 @@ const Wrapper = styled.div`
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 400px;
+        /* width: 400px; */
         margin: 50px;
         padding: 20px;
         label {
@@ -62,6 +62,7 @@ const Wrapper = styled.div`
         }
         input {
             color: #282828;
+            color: tomato;
             font-family: Arial, Helvetica, sans-serif;
             height: 20px;
             /* border-radius: 5px; */
@@ -87,10 +88,20 @@ const Wrapper = styled.div`
         }
         button:hover {
         box-shadow: 3px 3px tomato;
-    }
+        }
     }
     .resource-component {
         margin: 10px;
+    }
+    .resource-form label {
+        /* color: #282828;
+        font-weight: 500; */
+        color: #052C49;
+    }
+    .resource-form input {
+        /* color: #052C49; */
+        color: tomato;
+        /* color: #282828; */
     }
     @media (max-width: 1100px) {
         a {

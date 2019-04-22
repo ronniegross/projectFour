@@ -13,7 +13,7 @@ const Wrapper = styled.div`
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 400px;
+        /* width: 400px; */
         margin: 50px;
         padding: 20px;
         label {
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
         }
         button:hover {
         box-shadow: 3px 3px tomato;
-    }
+        }
     }
     .resource-component {
         margin: 10px;
@@ -92,6 +92,16 @@ const Wrapper = styled.div`
     }
     .userId:target {
         color: red;
+    }
+    /* @media (max-width: 800px) {
+        .comment-form {
+            width: 200px;
+        }
+    } */
+    @media (max-width: 800px) {
+        form.create-user-form {
+            width: 200px;
+        }
     }
 `
 

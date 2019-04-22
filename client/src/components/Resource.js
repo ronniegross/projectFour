@@ -66,11 +66,12 @@ const Wrapper = styled.div`
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 400px;
+        /* width: 400px; */
         margin: 50px;
         padding: 20px;
         label {
             color: #282828;
+            /* color: tomato; */
             font-family: Arial, Helvetica, sans-serif;
         }
         input {
@@ -111,7 +112,9 @@ const Wrapper = styled.div`
         /* display: inline; */
     }
     .update-resource-form label {
-        color: #052C49;
+        /* color: #052C49; */
+        color: tomato;
+        /* font-weight: 800; */
         /* text-decoration: underline; */
         /* color: tomato; */
     }

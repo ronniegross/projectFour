@@ -41,7 +41,7 @@ const Wrapper = styled.div`
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 400px;
+        /* width: 400px; */
         margin: 50px;
         padding: 20px;
         label {
@@ -85,6 +85,12 @@ const Wrapper = styled.div`
     .userList {
         margin-bottom: 10px;
         font-size: 18px;
+    }
+    .create-user-form label {
+        color: tomato;
+    }
+    .create-user-form input {
+        color: #052C49;
     }
 `
 
