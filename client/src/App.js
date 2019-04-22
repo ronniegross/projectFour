@@ -11,6 +11,7 @@ import "./App.css";
 import SingleComment from './components/SingleComment'
 import NumberIndex from './components/NumberIndex'
 import Mission from './components/Mission'
+import Links from './components/Links'
 // import Comment from "./components/Comment";
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
                       <Route path="/comment/:commentId" component={SingleComment}/>
                       <Route path="/numberindex" component={NumberIndex}/>
                       <Route path="/mission" component={Mission}/>
+                      <Route path="/links" component={Links}/>
                       {/* <Route path="/addComment" component={Comment}/> */}
                     </Switch>
                 </div>

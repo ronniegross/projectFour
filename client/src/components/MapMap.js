@@ -5,19 +5,26 @@ import styled from 'styled-components'
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY
 
-// const Wrapper = styled.div`
-//     .mapContainer {
-//         width: 500px;
-//         height: 500px;
-//     }
-// `
+const Wrapper = styled.div`
+    .mapContainer {
+        width: 800px;
+        height: 500px;
+        margin: 0 auto;
+    }
+    @media (max-width: 800px) {
+        .mapContainer {
+            width: 300px;
+            height: 300px;
+        }
+    }
+`
 
-const mapStyles = {
-    width: '85%',
-    height: '85%',
-    margin: '0 auto',
+// const mapStyles = {
+//     width: '85%',
+//     height: '85%',
+//     margin: '0 auto',
+// };
 
-};
 
 class MapMap extends Component {
     constructor(props) {
@@ -52,10 +59,11 @@ class MapMap extends Component {
 
     render() {
         return (
-            // <Wrapper>
-                <div style={{ width: 700, height: 700, margin: '0 auto' }} id={this.props.id} />
-                // <div className="mapContainer" />
-            // </Wrapper>
+            <Wrapper>
+                {/* <div className="mapContainer" style={{ width: 700, height: 700, margin: '0 auto' }} id={this.props.id} /> */}
+                <div className="mapContainer" id={this.props.id} />
+                {/* // <div className="mapContainer" /> */}
+            </Wrapper>
         );
     }
 }

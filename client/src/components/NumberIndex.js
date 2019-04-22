@@ -15,6 +15,9 @@ const Wrapper = styled.div`
     .resourceDiv {
         margin: 10px;
     }
+    h2 {
+        color: tomato;
+    }
 `
 
 export default class NumberIndex extends Component {
@@ -56,6 +59,7 @@ export default class NumberIndex extends Component {
         return (
             <div>
                 <Wrapper>
+                    <h2>Number Index</h2>
                     {this.state.resources.map(resource => (
                         <div className="resourceDiv" key={resource.id}>
                             {/* <Link to={`/resources/${resource.id}`}><Pic src={resource.photo_url} alt="resourcePic"></Pic></Link> */}

@@ -127,6 +127,9 @@ const Wrapper = styled.div`
         button {
             height: 50px;
         }
+        h1 {
+            font-size: 24px;
+        }
     }
 `
 
