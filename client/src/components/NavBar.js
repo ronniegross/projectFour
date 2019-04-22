@@ -186,7 +186,7 @@ export default class NavBar extends Component {
             <div>
                 <Wrapper>
                     <nav>
-                        <div className="navbar-toggle" onClick={this.toggleMobileDropDown}><img className="navbar-toggle" src="https://i.imgur.com/I34tvzm.png" alt="mobilemenutrigger" /></div>
+                        <div className="navbar-toggle" onClick={this.toggleMobileDropDown}><img className="navbar-toggle" src="https://i.imgur.com/TWx3C5E.png" alt="mobilemenutrigger" /></div>
                         {/* <div className="navbar-toggle" onClick={this.toggleMobileDropDown}>Menu</div> */}
                         <Link to={'/'}><div className="responsive-logo"><img src="https://i.imgur.com/tFS2b17.png" alt="aslLogo"/></div></Link>
                         <div className="mobile-menu">

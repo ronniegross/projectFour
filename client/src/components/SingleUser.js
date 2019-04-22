@@ -26,6 +26,9 @@ const Wrapper = styled.div`
     button:hover {
         color: tomato;
     }
+    p {
+        color: #052C49
+    }
 `
 
 export default class SingleUser extends Component {
@@ -87,10 +90,10 @@ export default class SingleUser extends Component {
             <div>
                 <Wrapper>
                     <h2>{this.state.user.name}</h2>
-                    <h3>email: {this.state.user.email}</h3>
-                    <h3>password: {this.state.user.password}</h3>
-                    <h3>age: {this.state.user.age}</h3>
-                    <h3>gender: {this.state.user.gender}</h3>
+                    <p>Email: {this.state.user.email}</p>
+                    <p>Password: {this.state.user.password}</p>
+                    <p>Age: {this.state.user.age}</p>
+                    <p>Gender: {this.state.user.gender}</p>
                     <button onClick={this.deleteUser}>Delete User</button>
                 </Wrapper>
             </div>
