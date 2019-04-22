@@ -100,8 +100,14 @@ const Wrapper = styled.div`
         color: tomato;
     }
     @media (max-width: 800px) {
-        .create-user-form {
+        /* .create-user-form {
             width: 170px;
+        } */
+        .resource-component {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
         }
         .create-user-form button {
             max-width: 150px;
@@ -257,7 +263,7 @@ class Users extends Component {
                                             value={this.state.createdUser.gender}
                                         />
                                     </div>
-                                    <div className="resource-component">
+                                    <div className="resource-component-submit">
                                         <button type="submit">Create Account</button>
                                     </div>
                                 </form>

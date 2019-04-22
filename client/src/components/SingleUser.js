@@ -22,6 +22,7 @@ const Wrapper = styled.div`
             color: #052C49;
             text-decoration: underline;
             cursor: pointer;
+            background-color: white;
         }
     button:hover {
         color: tomato;
