@@ -30,6 +30,7 @@ const Wrapper = styled.div`
         font-size: 16px;
         color: tomato;
         border-radius: 5px;
+        margin-top: 20px;
     }
     .btn:hover {
         box-shadow: 3px 3px tomato;
@@ -77,6 +78,10 @@ const Wrapper = styled.div`
     }
     .resource-component {
         margin: 10px;
+    }
+    .userList {
+        margin-bottom: 10px;
+        font-size: 18px;
     }
 `
 
@@ -165,7 +170,7 @@ class Users extends Component {
                     {this.state.users.map(user => (
                         <div key={user.id}>
                             {/* <Link to={`/users/${user.id}`} >{user.name}: {user.id}</Link> */}
-                            <h3><Link to={`/user/${user.id}`} >{user.name}</Link></h3>
+                            <div className="userList"><Link to={`/user/${user.id}`} >{user.name}</Link></div>
                             {/* <h2>{user.name}</h2> */}
                             {/* <button onClick={this.deleteUser}>delete user</button> */}
                         </div>

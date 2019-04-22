@@ -89,7 +89,7 @@ export default class SingleUser extends Component {
                     <h3>password: {this.state.user.password}</h3>
                     <h3>age: {this.state.user.age}</h3>
                     <h3>gender: {this.state.user.gender}</h3>
-                    <button onClick={this.deleteUser}>delete user</button>
+                    <button onClick={this.deleteUser}>Delete User</button>
                 </Wrapper>
             </div>
         )

@@ -29,6 +29,9 @@ const Wrapper = styled.div`
         color: tomato;
         margin-top: 10px;
     }
+    a:hover {
+        color: #052C49;
+    }
 
     .btn {
         width: 200px;
@@ -171,7 +174,7 @@ class ResourceList extends Component {
                         {this.state.resources.map(resource => (
                             <div className="resourceDiv" key={resource.id}>
                                 <Link to={`/resources/${resource.id}`}><Pic src={resource.photo_url} alt="resourcePic"></Pic></Link>
-                                <Link to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
+                                <Link className="resourceName" to={`/resources/${resource.id}`} >{resource.resource_name}</Link>
                             </div>
                         ))}
                     </TileWrapper>

@@ -18,10 +18,11 @@ const Wrapper = styled.div`
         color: #052C49;
     }
     h3 {
-        color: #052C49;
+        /* color: #052C49; */
+        color: tomato;
     }
     h3.comment-lable  {
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
     button {
         width: 150px;
@@ -32,16 +33,19 @@ const Wrapper = styled.div`
         font-size: 16px;
         color: tomato;
         border-radius: 5px;
-        margin: 10px;
+        margin: 20px 10px 10px 10px;
     }
     button:hover {
         box-shadow: 3px 3px tomato;
     }
     a {
         color: #052C49;
+        /* color: tomato; */
         text-decoration: none;
+        margin: 10px;
     }
     a:hover {
+        /* color: #052C49; */
         color: tomato;
     }
     .delete {
@@ -96,6 +100,18 @@ const Wrapper = styled.div`
     }
     .resource-component {
         margin: 10px;
+    }
+    h4 {
+        /* color: tomato; */
+        color: #052C49;
+        margin: 0 0 15px 0;
+        /* display: inline; */
+    }
+    .update-resource-form label {
+        color: #052C49;
+    }
+    .update-resource-form input {
+        color: #052C49;
     }
 `
 
@@ -224,11 +240,15 @@ class Resource extends Component {
                 <Wrapper>
                     <h1>{this.state.resource.resource_name}</h1>
                     <Pic src={this.state.resource.photo_url} alt="" />
-                    <h3>Address: {this.state.resource.address}</h3>
-                    <h3>Contact Number: {this.state.resource.contact_number}</h3>
+                    <div className="address-contact">
+                        <h3>Address: </h3><h4>{this.state.resource.address}</h4>
+                    </div>
+                    <div className="address-contact">
+                        <h3>Contact Number: </h3><h4>{this.state.resource.contact_number}</h4>
+                    </div>
                     <h3 className="comment-lable">Comments: </h3>
                     {this.state.comments.map(comment => (
-                        <h4><Link key={comment.id} to={`/comment/${comment.id}`} >"{comment.comment}"</Link></h4>
+                        <Link key={comment.id} to={`/comment/${comment.id}`} >"{comment.comment}"</Link>
                         // <div key={comment.id}>
                         //     <p>{comment.user}: {comment.comment}</p>
                         //     <button className="delete" onClick={this.deleteComment}>Delete Comment</button>
@@ -237,7 +257,7 @@ class Resource extends Component {
                     <button onClick={this.toggleCommentForm}>Add Comment</button>
                     {
                         this.state.isCommentFormDisplayed ?
-                            <CreateComment resourceId={this.props.match.params.id}/>
+                            <CreateComment resourceId={this.props.match.params.id} />
                             : null
                     }
                     <button onClick={this.toggleUpdateResource}>Update Resource</button>
