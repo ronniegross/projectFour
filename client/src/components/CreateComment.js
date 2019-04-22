@@ -83,6 +83,15 @@ const Wrapper = styled.div`
     /* .userBlock {
         margin: 0 auto;
     } */
+    .userId {
+        cursor: pointer;
+    }
+    .userId:hover {
+        color: tomato;
+    }
+    .userId:target {
+        color: red;
+    }
 `
 
 export default class CreateComment extends Component {
@@ -186,85 +195,43 @@ export default class CreateComment extends Component {
                         <form onSubmit={this.createComment}>
                             <div className="resource-component dropdown">
                                 {/* <button onClick={this.toggleShowUsers}>Select A User</button> */}
-                                <div className="dropdownTrigger" onClick={this.toggleShowUsers}>Select A User</div>
-                                {
-                                    this.state.isShowUsersDisplayed ?
-                                        <div>
-                                            <ul>
-                                                {
-                                                    this.state.users.map(user => (
-                                                        // <button key={user.id} value={user.id}>{user.name}: {user.id}</button>
-                                                        // <div className="userBlock">
-                                                        <li onClick={this.saveUserId} className="userId" key={user.id} value={user.id}>{user.name}: {user.id}</li>
-                                                        // </div>
-                                                    ))
-                                                }
-                                            </ul>
-                                        </div>
-                                        : null
-                                }
-                            </div>
-                            <div className="resource-component dropdown">
-                                <div className="dropdownTrigger" onClick={this.toggleShowResources}>Select A Resource</div>
-                                {/* bring this in from this.props.match.params.id */}
-                                {/* <button>Show All Users</button> */}
-                                {
-                                    this.state.isShowResourcesDisplayed ?
-                                        <div>
-                                            <ul>
-                                                {
-                                                    this.state.resources.map(resource => (
-                                                        <li className="resourceId" key={resource.id} value={resource.resource_name}>{resource.resource_name}: {resource.id}</li>
-                                                    ))
-                                                }
-                                            </ul>
-                                        </div>
-                                        : null
-                                }
-                            </div>
-                            <div className="resource-component">
-                                <h3>Add Comment: </h3>
-                            </div>
-                            {/* <div className="resource-component">
+                                <h3>Select A User</h3>
+                                <div>
+                                    <ul>
+                                        {
+                                            this.state.users.map(user => (
+                                                // <button key={user.id} value={user.id}>{user.name}: {user.id}</button>
+                                                // <div className="userBlock">
+                                                <li onClick={this.saveUserId} className="userId" key={user.id} value={user.id}>{user.name}</li>
+                                                // </div>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
+                                <div className="resource-component">
+                                    <h3>Add Comment</h3>
+                                </div>
+                                {/* <div className="resource-component">
                                 
                             </div> */}
-                            <div className="resource-component">
-                                <label htmlFor="comment">Write Your Comment Here: </label>
-                                <input
-                                    id="comment"
-                                    type="text"
-                                    name="comment"
-                                    onChange={this.handleCommentChange}
-                                    value={this.state.createdComments}
-                                />
-                            </div>
-                            <div className="resource-component">
-                                <label htmlFor="user">User ID: </label>
-                                <input
-                                    id="user"
-                                    type="text"
-                                    name="user"
-                                    onChange={this.handleCommentChange}
-                                    value={this.state.createdComments}
-                                />
-                            </div>
-                            <div className="resource-component">
-                                <label htmlFor="resource">Resource ID: </label>
-                                <input
-                                    id="resource"
-                                    type="text"
-                                    name="resource"
-                                    onChange={this.handleCommentChange}
-                                    value={this.state.createdComments}
-                                />
-                            </div>
-                            <div className="resource-component">
-                                <button>Submit Comment</button>
+                                <div className="resource-component">
+                                    <label htmlFor="comment">Write Your Comment Here: </label>
+                                    <input
+                                        id="comment"
+                                        type="text"
+                                        name="comment"
+                                        onChange={this.handleCommentChange}
+                                        value={this.state.createdComments}
+                                    />
+                                </div>
+                                <div className="resource-component">
+                                    <button>Submit Comment</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </Wrapper>
             </div>
-        )
-    }
-}
+                )
+            }
+        }
