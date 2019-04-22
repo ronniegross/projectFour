@@ -239,6 +239,16 @@ class ResourceList extends Component {
                                         />
                                     </div>
                                     <div className="resource-component">
+                                        <label htmlFor="url">Link: </label>
+                                        <input
+                                            id="url"
+                                            type="text"
+                                            name="url"
+                                            onChange={this.handleUpdateChange}
+                                            value={this.state.resource.url}
+                                        />
+                                    </div>
+                                    <div className="resource-component">
                                         <button className="resource-component">Submit new resource</button>
                                     </div>
                                 </form>
