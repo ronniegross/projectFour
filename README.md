@@ -45,7 +45,7 @@ The goal of this project was to create an easy to use application to assist Atla
 ## Style Guide
 ![Style Guide](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Style_Guide.jpg?raw=true)
 
-## ERDs
+## ERD
 ![ERD](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_MVP.jpg?raw=true)
 
 ## Technologies:
