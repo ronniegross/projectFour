@@ -54,8 +54,8 @@ export default class Links extends Component {
 
     sortResources = () => {
         let alphabeticalResourcesSorted = this.state.resources.sort(function (a, b) {
-            if (a.resource_name < b.resource_name) { return -1; }
-            if (a.resource_name > b.resource_name) { return 1; }
+            if (a.resource_name.toUpperCase() < b.resource_name.toUpperCase()) { return -1; }
+            if (a.resource_name.toUpperCase() > b.resource_name.toUpperCase()) { return 1; }
             return 0;
         })
         this.setState({ alphabeticalResources: alphabeticalResourcesSorted })

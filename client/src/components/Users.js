@@ -162,9 +162,13 @@ class Users extends Component {
 
     createUser = () => {
         axios.post('/api/users/', this.state.createdUser)
-        // .then(res => {
+        .then(res => {
+            const copiedUsers = [...this.state.users]
+            copiedUsers.push(this.state.createdUser)
+            this.setState({ users: copiedUsers })
+            this.setState({ createdUser: this.state.user })
         // this.setState({ redirectToHome: true, createdUser: res.data })
-        // })
+        })
     }
 
     handleSignUp = (event) => {

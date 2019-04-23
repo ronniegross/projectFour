@@ -139,15 +139,19 @@ class ResourceList extends Component {
             resource_name: '',
             photo_url: '',
             address: '',
-            contact_number: ''
+            contact_number: '',
+            url: ''
         },
         createdResource: {},
         isAddNewResourceFormDisplayed: false
     }
 
     componentDidMount() {
-        this.fetchResources();
+        this.fetchResources().then(() => {
+            this.sortResources()
+        })
     }
+
 
     fetchResources = async () => {
         try {
@@ -163,8 +167,12 @@ class ResourceList extends Component {
     createResource = () => {
         axios.post('/api/resources/', this.state.createdResource)
             .then(res => {
-                this.setState({ createdResource: res.data })
-                // document.getElementById("resource-form").reset()
+                // this.setState({ createdResource: res.data })
+                const copiedResources = [...this.state.resources];
+                copiedResources.push(this.state.createdResource)
+                this.setState({ resources : copiedResources })
+                this.setState({ createdResource: this.state.resource})
+                this.sortResources()
             })
     }
 
@@ -183,6 +191,15 @@ class ResourceList extends Component {
         this.setState((state, props) => {
             return ({ isAddNewResourceFormDisplayed: !state.isAddNewResourceFormDisplayed })
         })
+    }
+
+    sortResources = () => {
+        let alphabeticalResourcesSorted = this.state.resources.sort(function (a, b) {
+            if (a.resource_name.toUpperCase() < b.resource_name.toUpperCase()) { return -1; }
+            if (a.resource_name.toUpperCase() > b.resource_name.toUpperCase()) { return 1; }
+            return 0;
+        })
+        this.setState({ resources: alphabeticalResourcesSorted })
     }
 
     render() {
@@ -257,7 +274,7 @@ class ResourceList extends Component {
                                             type="text"
                                             name="url"
                                             onChange={this.handleUpdateChange}
-                                            value={this.state.resource.url}
+                                            value={this.state.createdResource.url}
                                         />
                                     </div>
                                     <div className="resource-component">

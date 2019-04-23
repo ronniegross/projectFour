@@ -84,7 +84,7 @@ export default class SingleUser extends Component {
 
     render() {
         if (this.state.redirectToUserList === true) {
-            return (<Redirect to={'/'} />)
+            return (<Redirect to={'/useraccounts'} />)
         }
         // console.log(this.state.user)
         return (
