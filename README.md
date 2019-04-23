@@ -15,6 +15,9 @@
 
 The goal of this project was to create an easy to use application to assist Atlanta's homeless community in finding shelter and community. Mobile responsiveness was the top priority as most homeless folks have access to a smart phone, which would allow them to easily utilize a web application.
 
+### Home Page Mockup
+![Home Mockup](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Home_Mockup.jpg?raw=true)
+
 ## [Link](https://atlanta-shelter-resource.herokuapp.com/) to the Deployed App
 
 ## [Link](https://trello.com/b/yX3KW3it/project-4-wdi) to the Trello Board
@@ -22,19 +25,18 @@ The goal of this project was to create an easy to use application to assist Atla
 ## Wirefames
 
 ### Resource List
-
 ![Resource List](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Home.jpg?raw=true)
+
 ### Single Resource
-
 ![Single Resource](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Single_Resource_MVP.jpg?raw=true)
+
 ### Map
-
 ![Map](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Maps.jpg?raw=true) 
+
 ### Links
-
 ![Links](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Links.jpg?raw=true)
-### Number Index
 
+### Number Index
 ![Number Index](https://github.com/ronniegross/projectFour/blob/master/ASR_Mockups_StyleGuide/ASR_Number_Index.jpg?raw=trueg)
 
 ### User Account
